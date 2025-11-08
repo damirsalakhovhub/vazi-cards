@@ -193,7 +193,7 @@ function generateRelease() {
   return randomItem(milestoneTemplates);
 }
 
-function generateSubtasks() {
+export function generateSubtasks() {
   if (Math.random() > 0.3) return null;
   
   const count = randomInt(1, 20);
@@ -243,7 +243,7 @@ export function generateCard(parentId = null) {
     labels: generateLabels(),
     date: generateDate(),
     subtasks: generateSubtasks(),
-    parentNote: generateParentNote(),
+    parentNote: null,
     parentId: parentId || null,
     subtaskIds: []
   };

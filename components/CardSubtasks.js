@@ -90,19 +90,6 @@ export function createCardSubtasks(subtasksData, subtaskCards = null, allCards =
     const text = document.createElement('span');
     text.className = 'card-subtasks-text';
     text.textContent = item.text;
-    if (item.card) {
-      text.style.cursor = 'pointer';
-      text.addEventListener('click', () => {
-        const subtaskCardElement = document.querySelector(`[data-card-id="${item.id}"]`);
-        if (subtaskCardElement) {
-          subtaskCardElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          subtaskCardElement.style.outline = '2px solid var(--color-checkbox-checked-bg)';
-          setTimeout(() => {
-            subtaskCardElement.style.outline = 'none';
-          }, 2000);
-        }
-      });
-    }
     
     itemEl.appendChild(checkboxWrapper);
     itemEl.appendChild(text);

@@ -18,6 +18,7 @@ export function createCardParentNote(noteData) {
     note.appendChild(icon);
   }
   
+  
   const tooltip = document.createElement('div');
   tooltip.className = 'card-parent-note-tooltip';
   tooltip.textContent = 'Parent';
