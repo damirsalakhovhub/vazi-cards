@@ -60,12 +60,52 @@ export function generateBoard(config = {}) {
   const distribution = distributeCards(totalCards, columns.length);
   
   const cards = [];
+  const parentCards = [];
+  
   columns.forEach((column, columnIndex) => {
     const cardsForColumn = distribution[columnIndex];
     for (let i = 0; i < cardsForColumn; i++) {
       const card = generateCard();
       card.columnId = column.id;
       cards.push(card);
+      
+      if (Math.random() < 0.3) {
+        parentCards.push(card);
+      }
+    }
+  });
+  
+  parentCards.forEach(parentCard => {
+    if (Math.random() < 0.5 && parentCard.subtasks) {
+      const subtasksCount = Math.min(parentCard.subtasks.total, randomInt(1, 4));
+      const subtaskIds = [];
+      
+      for (let i = 0; i < subtasksCount; i++) {
+        const subtaskCard = generateCard(parentCard.id);
+        const randomColumn = columns[randomInt(0, columns.length - 1)];
+        subtaskCard.columnId = randomColumn.id;
+        
+        if (parentCard.subtasks.items && parentCard.subtasks.items[i]) {
+          subtaskCard.title = parentCard.subtasks.items[i].text;
+          subtaskCard.subtasks = null;
+        }
+        
+        cards.push(subtaskCard);
+        subtaskIds.push(subtaskCard.id);
+      }
+      
+      parentCard.subtaskIds = subtaskIds;
+      parentCard.subtasks.total = subtasksCount;
+      parentCard.subtasks.items = subtaskIds.map((id) => {
+        const subtaskCard = cards.find(c => c.id === id);
+        const completed = Math.random() < 0.5;
+        return {
+          id: id,
+          text: subtaskCard.title,
+          completed: completed
+        };
+      });
+      parentCard.subtasks.completed = parentCard.subtasks.items.filter(item => item.completed).length;
     }
   });
   

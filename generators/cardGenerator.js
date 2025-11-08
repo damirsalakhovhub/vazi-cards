@@ -234,7 +234,7 @@ function generateParentNote() {
   };
 }
 
-export function generateCard() {
+export function generateCard(parentId = null) {
   return {
     id: generateId(),
     release: generateRelease(),
@@ -243,7 +243,9 @@ export function generateCard() {
     labels: generateLabels(),
     date: generateDate(),
     subtasks: generateSubtasks(),
-    parentNote: generateParentNote()
+    parentNote: generateParentNote(),
+    parentId: parentId || null,
+    subtaskIds: []
   };
 }
 

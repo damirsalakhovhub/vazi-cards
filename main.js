@@ -35,7 +35,7 @@ function renderBoard(boardData) {
         divider.className = 'card-divider';
         columnContent.appendChild(divider);
       }
-      const card = createCard(cardData);
+      const card = createCard(cardData, boardData.cards);
       columnContent.appendChild(card);
     });
     
