@@ -1,0 +1,48 @@
+.column-header {
+  background-color: var(--color-bg-content-header);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 40px;
+  padding: 0 10px;
+  border-radius: 7px 7px 0 0;
+}
+
+.column-title {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  color: var(--color-text-uno);
+}
+
+.column-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.column-counter {
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--color-text-dos);
+}
+
+.column-menu-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.column-menu-button svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  color: var(--color-text-dos);
+}
+

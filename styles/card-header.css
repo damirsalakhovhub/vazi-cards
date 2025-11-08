@@ -1,0 +1,53 @@
+.card-header {
+  display: flex;
+  align-items: center;
+  padding-top: 2px;
+}
+
+.card-header-container {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+}
+
+.card-checkbox-group {
+  display: flex;
+  align-items: center;
+}
+
+.card-dot {
+  width: 16px;
+  height: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--color-text-tres);
+}
+
+.card-dot svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.card-release {
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--color-text-dos);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition: color 0.1s ease, text-decoration-color 0.1s ease;
+}
+
+.card-release:hover {
+  color: var(--color-text-uno);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  text-decoration-color: hsla(215, 10%, 20%, 0.2);
+}
+

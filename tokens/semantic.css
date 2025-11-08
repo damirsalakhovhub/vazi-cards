@@ -1,0 +1,71 @@
+:root {
+  
+  /* Текст - семантические уровни */
+  --color-text-uno: var(--color-gray-10);
+  --color-text-dos: var(--color-gray-45);
+  --color-text-tres: var(--color-gray-60);
+  --color-text-quatro: var(--color-gray-70);
+
+  /* Фон - семантические уровни */
+  --color-bg-uno: var(--color-gray-98);
+  --color-bg-dos: var(--color-gray-95);
+  --color-bg-tres: var(--color-gray-90);
+  --color-bg-quatro: var(--color-gray-85);
+
+  /* Специальные цвета */
+  --color-bg: var(--color-gray-94);
+  --color-bg-content: var(--color-gray-98);
+  --color-bg-content-dos: var(--color-gray-95);
+  --color-bg-content-header: var(--color-gray-95);
+  --color-bg-content-header-hover: var(--color-gray-92);
+
+  --color-bg-card: var(--color-gray-98);
+  --color-bg-black: var(--color-gray-01);
+  --color-text-white: var(--color-gray-98);
+
+  /* Бордеры - семантические уровни */
+  --color-border-uno: hsla(215, 15%, 50%, 0.1);
+  --color-border-dos: hsla(215, 15%, 50%, 0.2);
+  --color-border-tres: hsla(215, 15%, 50%, 0.3);
+  --color-border-quatro: hsla(215, 15%, 50%, 0.4);
+
+  /* Дополнительные семантические цвета */
+  /* --color-bg-subtle: var(--color-gray-95); */
+  --color-bg-hover: var(--color-gray-90);
+  --color-border: var(--color-border-dos);
+  --color-border-subtle: var(--color-border-uno);
+  --color-text-error: var(--color-red-50);
+  --color-bg-accent: var(--color-red-50);
+  --color-avatar-blue: var(--color-blue-60);
+
+
+  /* Карточка */
+  --color-card-text: var(--color-gray-20);
+  --color-card-text-hover: var(--color-gray-1);
+
+  /* Родительская заметка */
+  --color-parent-note-text: var(--color-text-dos);
+  --color-parent-note-text-hover: var(--color-text-uno);
+  --color-parent-note-bg: var(--color-bg-content-header);
+  --color-parent-note-bg-hover: var(--color-bg-content-header-hover);
+
+  /* Чекбокс */
+  --color-checkbox-border: var(--color-border-dos);
+  --color-checkbox-border-hover: var(--color-border-quatro);
+  --color-checkbox-checked-bg: var(--color-green-30);
+  --color-checkbox-checked-icon: var(--color-text-white);
+  --color-checkbox-label: var(--color-text-dos);
+  --color-checkbox-label-hover: var(--color-text-uno);
+  --card-checked-opacity: 0.6;
+
+  /* Подзадачи */
+  --color-subtasks-header: var(--color-text-dos);
+  --color-subtasks-header-hover: var(--color-text-uno);
+  --color-subtasks-item: var(--color-gray-30);
+  --color-subtasks-item-hover: var(--color-gray-20);
+  --color-subtasks-item-underline-hover: var(--color-gray-80);
+  --color-subtsask-header-arrow: var(--color-text-tres);
+}
+
+
+

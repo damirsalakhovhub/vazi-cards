@@ -1,0 +1,11 @@
+.card-date {
+  font-size: 12px;
+  line-height: normal;
+  color: var(--color-text-dos);
+  white-space: nowrap;
+}
+
+.card-date-overdue {
+  color: var(--color-text-error);
+}
+
