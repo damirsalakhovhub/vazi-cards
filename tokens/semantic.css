@@ -18,6 +18,13 @@
   --color-bg-content-dos: var(--color-gray-95);
   --color-bg-content-header: var(--color-gray-95);
   --color-bg-content-header-hover: var(--color-gray-92);
+  
+  /* Column header colors - light shades */
+  --color-column-header-blue: hsla(215, 100%, 95%, 1);
+  --color-column-header-green: hsla(120, 30%, 95%, 1);
+  --color-column-header-purple: hsla(270, 100%, 95%, 1);
+  --color-column-header-orange: hsla(30, 100%, 95%, 1);
+  --color-column-header-pink: hsla(330, 100%, 95%, 1);
 
   --color-bg-card: var(--color-gray-98);
   --color-bg-black: var(--color-gray-01);

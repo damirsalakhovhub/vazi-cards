@@ -2,17 +2,17 @@ export const columnsConfig = [
   {
     id: 'todo',
     name: 'To Do',
-    color: null
+    color: 'blue'
   },
   {
     id: 'doing',
     name: 'Doing',
-    color: null
+    color: 'green'
   },
   {
     id: 'done',
     name: 'Done',
-    color: null
+    color: 'purple'
   }
 ];
 

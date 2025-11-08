@@ -15,7 +15,8 @@ function init() {
     const columnData = {
       title: columnConfig.name,
       showed: columnCards.length,
-      total: columnCards.length
+      total: columnCards.length,
+      color: columnConfig.color
     };
     
     const header = createColumnHeader(columnData);

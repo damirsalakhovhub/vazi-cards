@@ -8,6 +8,26 @@
   border-radius: 7px 7px 0 0;
 }
 
+.column-header-blue {
+  background-color: var(--color-column-header-blue);
+}
+
+.column-header-green {
+  background-color: var(--color-column-header-green);
+}
+
+.column-header-purple {
+  background-color: var(--color-column-header-purple);
+}
+
+.column-header-orange {
+  background-color: var(--color-column-header-orange);
+}
+
+.column-header-pink {
+  background-color: var(--color-column-header-pink);
+}
+
 .column-title {
   font-size: 14px;
   font-weight: 600;
