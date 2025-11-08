@@ -32,9 +32,21 @@ function distributeCards(totalCards, columnsCount) {
 export function generateBoard(config = {}) {
   const finalConfig = { ...defaultConfig, ...config };
   
-  let columns = columnsConfig;
+  let columns = [...columnsConfig];
   if (finalConfig.columnsCount && finalConfig.columnsCount !== columns.length) {
-    columns = columns.slice(0, finalConfig.columnsCount);
+    if (finalConfig.columnsCount < columns.length) {
+      columns = columns.slice(0, finalConfig.columnsCount);
+    } else {
+      const colors = ['blue', 'green', 'purple', 'orange', 'pink'];
+      const names = ['Backlog', 'In Progress', 'Review', 'Testing', 'Deployed'];
+      for (let i = columns.length; i < finalConfig.columnsCount; i++) {
+        columns.push({
+          id: `column-${i + 1}`,
+          name: names[i % names.length] || `Column ${i + 1}`,
+          color: colors[i % colors.length]
+        });
+      }
+    }
   }
   
   let totalCards;

@@ -1,16 +1,21 @@
 import { boardConfig } from './data/board.js';
+import { generateBoard } from './generators/boardGenerator.js';
 import { createColumnHeader } from './components/ColumnHeader.js';
 import { createCard } from './components/Card.js';
 import { createAddTaskButton } from './components/AddTaskButton.js';
+import { createGeneratorPanel } from './components/GeneratorPanel.js';
 
-function init() {
+let currentBoardConfig = boardConfig;
+
+function renderBoard(boardData) {
   const app = document.getElementById('app');
+  app.innerHTML = '';
   
-  boardConfig.columns.forEach(columnConfig => {
+  boardData.columns.forEach(columnConfig => {
     const column = document.createElement('div');
     column.className = 'column';
     
-    const columnCards = boardConfig.cards.filter(card => card.columnId === columnConfig.id);
+    const columnCards = boardData.cards.filter(card => card.columnId === columnConfig.id);
     
     const columnData = {
       title: columnConfig.name,
@@ -37,6 +42,21 @@ function init() {
     
     app.appendChild(column);
   });
+}
+
+function handleGenerate(config) {
+  const newBoard = generateBoard(config);
+  currentBoardConfig = newBoard;
+  renderBoard(newBoard);
+}
+
+function init() {
+  const app = document.getElementById('app');
+  
+  const generatorPanel = createGeneratorPanel(handleGenerate);
+  document.body.insertBefore(generatorPanel, app);
+  
+  renderBoard(currentBoardConfig);
 }
 
 init();

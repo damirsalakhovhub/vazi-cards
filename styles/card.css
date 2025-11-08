@@ -11,8 +11,7 @@
 
 .card-divider {
   height: 1px;
-  background-color: var(--color-border-subtle);
-  opacity: 0.7;
+  background-color: var(--color-border-dos);
   width: 100%;
 }
 
