@@ -1,8 +1,9 @@
 .card-date {
-  font-size: 12px;
+  font-size: 11px;
   line-height: normal;
   color: var(--color-text-dos);
   white-space: nowrap;
+  margin-left: 2px;
 }
 
 .card-date-overdue {

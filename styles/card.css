@@ -70,3 +70,25 @@
   display: block;
 }
 
+.card-parameters-plus {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  color: var(--color-text-tres);
+  flex-shrink: 0;
+}
+
+.card:hover .card-parameters-plus {
+  opacity: 1;
+}
+
+.card-parameters-plus svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
