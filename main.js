@@ -1,11 +1,10 @@
-import { boardConfig } from './data/board.js';
 import { generateBoard } from './generators/boardGenerator.js';
 import { createColumnHeader } from './components/ColumnHeader.js';
 import { createCard } from './components/Card.js';
 import { createAddTaskButton } from './components/AddTaskButton.js';
 import { createGeneratorPanel } from './components/GeneratorPanel.js';
 
-let currentBoardConfig = boardConfig;
+let currentBoardConfig = generateBoard({ columnsCount: 5, totalCards: 50 });
 
 function renderBoard(boardData) {
   const app = document.getElementById('app');
@@ -27,15 +26,20 @@ function renderBoard(boardData) {
     const header = createColumnHeader(columnData);
     column.appendChild(header);
     
+    const columnContent = document.createElement('div');
+    columnContent.className = 'column-content';
+    
     columnCards.forEach((cardData, index) => {
       if (index > 0) {
         const divider = document.createElement('div');
         divider.className = 'card-divider';
-        column.appendChild(divider);
+        columnContent.appendChild(divider);
       }
       const card = createCard(cardData);
-      column.appendChild(card);
+      columnContent.appendChild(card);
     });
+    
+    column.appendChild(columnContent);
     
     const addButton = createAddTaskButton();
     column.appendChild(addButton);

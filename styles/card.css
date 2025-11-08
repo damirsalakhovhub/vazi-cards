@@ -3,6 +3,7 @@
   flex-direction: column;
   padding: 8px;
   transition: opacity 0.2s ease;
+  flex-shrink: 0;
 }
 
 .card-checked {
@@ -13,6 +14,10 @@
   height: 1px;
   background-color: var(--color-border-dos);
   width: 100%;
+  margin: 0;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
 }
 
 .card-main {

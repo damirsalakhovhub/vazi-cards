@@ -12,6 +12,11 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+body {
+  height: 100vh;
+  overflow: hidden;
+}
+
 #app {
   display: flex;
   gap: 12px;
@@ -19,6 +24,8 @@ body {
   align-items: flex-start;
   overflow-x: auto;
   padding: 20px;
+  height: 100vh;
+  overflow-y: hidden;
 }
 
 .column {
@@ -29,7 +36,16 @@ body {
   flex-direction: column;
   width: 340px;
   flex-shrink: 0;
-  overflow: hidden;
+  max-height: calc(100vh - 40px);
   outline: 1px solid hsla(215, 15%, 50%, 0.05);
+}
+
+.column-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
 }
 

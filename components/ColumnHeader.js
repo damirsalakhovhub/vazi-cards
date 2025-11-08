@@ -4,10 +4,6 @@ export function createColumnHeader(columnData) {
   const header = document.createElement('div');
   header.className = 'column-header';
   
-  if (columnData.color) {
-    header.classList.add(`column-header-${columnData.color}`);
-  }
-  
   const title = document.createElement('h2');
   title.className = 'column-title';
   title.textContent = columnData.title;

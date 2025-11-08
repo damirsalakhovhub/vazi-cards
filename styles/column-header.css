@@ -4,28 +4,10 @@
   align-items: center;
   justify-content: space-between;
   height: 40px;
+  min-height: 40px;
   padding: 0 10px;
   border-radius: 7px 7px 0 0;
-}
-
-.column-header-blue {
-  background-color: var(--color-column-header-blue);
-}
-
-.column-header-green {
-  background-color: var(--color-column-header-green);
-}
-
-.column-header-purple {
-  background-color: var(--color-column-header-purple);
-}
-
-.column-header-orange {
-  background-color: var(--color-column-header-orange);
-}
-
-.column-header-pink {
-  background-color: var(--color-column-header-pink);
+  flex-shrink: 0;
 }
 
 .column-title {
@@ -33,12 +15,15 @@
   font-weight: 600;
   line-height: 20px;
   color: var(--color-text-uno);
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .column-info {
   display: flex;
   align-items: center;
   gap: 10px;
+  flex-shrink: 0;
 }
 
 .column-counter {

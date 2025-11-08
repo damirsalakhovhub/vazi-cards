@@ -94,7 +94,21 @@ function generateTitle() {
 }
 
 function generateAssignees() {
-  const count = Math.random() > 0.3 ? randomInt(1, 2) : 0;
+  const random = Math.random();
+  let count;
+  
+  if (random < 0.3) {
+    count = 0; // 30% chance of no assignees
+  } else if (random < 0.6) {
+    count = 1; // 30% chance of one assignee
+  } else if (random < 0.8) {
+    count = 2; // 20% chance of two assignees
+  } else if (random < 0.87) {
+    count = 3; // 7% chance of three assignees
+  } else {
+    count = 4; // 3% chance of four assignees
+  }
+  
   if (count === 0) return [];
   
   const assignees = [];
