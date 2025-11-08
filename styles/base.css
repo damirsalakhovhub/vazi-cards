@@ -7,7 +7,6 @@
 body {
   background-color: var(--color-bg);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  padding: 20px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -15,7 +14,11 @@ body {
 
 #app {
   display: flex;
-  justify-content: center;
+  gap: 12px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  overflow-x: auto;
+  padding: 20px;
 }
 
 .column {
@@ -25,6 +28,7 @@ body {
   display: flex;
   flex-direction: column;
   width: 340px;
+  flex-shrink: 0;
   overflow: hidden;
   outline: 1px solid hsla(215, 15%, 50%, 0.05);
 }
