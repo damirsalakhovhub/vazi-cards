@@ -57,3 +57,29 @@
 .card-parent-note-tooltip-visible {
   opacity: 1;
 }
+
+.card-parent-note-plus {
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+  color: var(--color-text-tres);
+}
+
+.card-parent-note:hover .card-parent-note-plus {
+  opacity: 1;
+}
+
+.card-parent-note-plus svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
