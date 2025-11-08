@@ -10,16 +10,49 @@
   display: inline-block;
   width: fit-content;
   max-width: 270px;
+  position: relative;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.card-parent-note-text {
+  display: block;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  position: relative;
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 10px) 100%, 0 100%);
-  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .card-parent-note:hover {
   background-color: var(--color-parent-note-bg-hover);
   color: var(--color-parent-note-text-hover);
   cursor: pointer;
+}
+
+.card-parent-note-tooltip {
+  position: fixed;
+  background-color: var(--color-bg-black);
+  color: var(--color-text-white);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  line-height: 14px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+  z-index: 10000;
+}
+
+.card-parent-note-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 3px solid transparent;
+  border-top-color: var(--color-bg-black);
+}
+
+.card-parent-note-tooltip-visible {
+  opacity: 1;
 }
