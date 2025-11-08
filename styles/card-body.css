@@ -5,7 +5,8 @@
 
 .card-title {
   font-size: 14px;
-  line-height: 20px;
+  line-height: 19px;
+  font-weight: 400;
   color: var(--color-card-text);
   text-decoration: none;
 }

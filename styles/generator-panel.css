@@ -1,13 +1,13 @@
 .generator-panel {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 10px;
+  right: 10px;
   z-index: 1000;
   background-color: var(--color-bg-content);
-  border-radius: 8px;
+  border-radius: 5px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   padding: 12px;
-  min-width: 200px;
+  /* min-width: 200px; */
 }
 
 .generator-toggle {
@@ -17,7 +17,7 @@
   background-color: transparent;
   color: var(--color-text-uno);
   border: none;
-  border-radius: 4px;
+  border-radius: 54px;
   cursor: pointer;
   font-size: 20px;
   display: flex;
