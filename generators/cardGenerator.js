@@ -171,21 +171,95 @@ function generateLabels() {
   return labels;
 }
 
-function generateDate() {
-  if (Math.random() > 0.4) return null;
+function generateDate(rangeType = null) {
+  // If rangeType is specified, always generate date. Otherwise random chance
+  if (!rangeType && Math.random() > 0.4) return null;
   
   const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
-  const day = randomInt(1, 28);
-  const month = randomItem(months);
-  const year = randomInt(2024, 2025);
   
-  const overdue = Math.random() > 0.7;
+  const overdue = Math.random() < 0.2;
   
-  return {
-    type: 'end',
-    value: `${day} ${month} ${year}`,
-    overdue
-  };
+  // If rangeType is specified, generate that specific type
+  if (rangeType === 'same-month-year') {
+    // Same month and year: "10 → 16 Jan 2025"
+    const startDay = randomInt(1, 15);
+    const endDay = randomInt(startDay + 1, 28);
+    const monthIndex = randomInt(0, 11);
+    const year = randomInt(2024, 2025);
+    
+    return {
+      type: 'range',
+      start: {
+        day: startDay,
+        month: months[monthIndex],
+        year: year
+      },
+      end: {
+        day: endDay,
+        month: months[monthIndex],
+        year: year
+      },
+      overdue
+    };
+  } else if (rangeType === 'different-month') {
+    // Different month, same year: "10 Jan → 16 Feb 2025"
+    const startDay = randomInt(1, 20);
+    const startMonthIndex = randomInt(0, 10);
+    const year = randomInt(2024, 2025);
+    
+    const endMonthIndex = startMonthIndex + 1;
+    const endDay = randomInt(1, 28);
+    
+    return {
+      type: 'range',
+      start: {
+        day: startDay,
+        month: months[startMonthIndex],
+        year: year
+      },
+      end: {
+        day: endDay,
+        month: months[endMonthIndex],
+        year: year
+      },
+      overdue
+    };
+  } else if (rangeType === 'different-year') {
+    // Different year: "10 Dec 2025 → 05 Jan 2026"
+    const startDay = randomInt(10, 28);
+    const startMonthIndex = 11; // December
+    const startYear = 2025;
+    
+    const endDay = randomInt(1, 10);
+    const endMonthIndex = 0; // January
+    const endYear = 2026;
+    
+    return {
+      type: 'range',
+      start: {
+        day: startDay,
+        month: months[startMonthIndex],
+        year: startYear
+      },
+      end: {
+        day: endDay,
+        month: months[endMonthIndex],
+        year: endYear
+      },
+      overdue
+    };
+  } else {
+    // Single end date
+    const day = randomInt(1, 28);
+    const month = randomItem(months);
+    const year = randomInt(2024, 2025);
+    
+    return {
+      type: 'end',
+      value: `${day} ${month} ${year}`,
+      overdue
+    };
+  }
 }
 
 function generateRelease() {
@@ -234,14 +308,14 @@ function generateParentNote() {
   };
 }
 
-export function generateCard(parentId = null) {
+export function generateCard(parentId = null, dateRangeType = null) {
   return {
     id: generateId(),
     release: generateRelease(),
     title: generateTitle(),
     assignees: generateAssignees(),
     labels: generateLabels(),
-    date: generateDate(),
+    date: generateDate(dateRangeType),
     subtasks: generateSubtasks(),
     parentNote: null,
     parentId: parentId || null,

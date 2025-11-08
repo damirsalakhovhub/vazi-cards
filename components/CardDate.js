@@ -10,13 +10,28 @@ export function createCardDate(dateData) {
     date.className += ' card-date-overdue';
   }
   
-  const arrow = document.createElement('span');
-  arrow.textContent = '→ ';
-  
   const value = document.createElement('span');
-  value.textContent = dateData.value;
   
-  date.appendChild(arrow);
+  if (dateData.type === 'range') {
+    const { start, end } = dateData;
+    
+    // Format start date
+    let startStr = `${start.day}`;
+    if (start.month !== end.month || start.year !== end.year) {
+      startStr += ` ${start.month}`;
+      if (start.year !== end.year) {
+        startStr += ` ${start.year}`;
+      }
+    }
+    
+    // Format end date
+    let endStr = `${end.day} ${end.month} ${end.year}`;
+    
+    value.textContent = `${startStr} – ${endStr}`;
+  } else {
+    value.textContent = dateData.value;
+  }
+  
   date.appendChild(value);
   
   return date;
