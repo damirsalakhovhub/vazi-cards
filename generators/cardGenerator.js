@@ -150,11 +150,18 @@ function generateLabels() {
     if (type === 'priority-high' || type === 'priority-low') {
       label.icon = type === 'priority-high' ? 'arrow-up' : 'arrow-down';
     } else {
-      if (Math.random() > 0.3) {
+      const hasText = Math.random() > 0.3;
+      const hasIcon = Math.random() > 0.3;
+      
+      if (hasText) {
         label.text = randomItem(labelTexts);
       }
-      if (Math.random() > 0.3) {
+      if (hasIcon) {
         label.icon = randomItem(labelIcons);
+      }
+      
+      if (!hasText && !hasIcon) {
+        label.text = randomItem(labelTexts);
       }
     }
     

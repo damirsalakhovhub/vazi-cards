@@ -17,6 +17,10 @@ export function createCardLabels(labels) {
   container.className = 'card-labels';
   
   labels.forEach(label => {
+    if (!label.icon && !label.text) {
+      return;
+    }
+    
     const labelEl = document.createElement('span');
     labelEl.className = `card-label card-label-${label.type}`;
     

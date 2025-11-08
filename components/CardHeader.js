@@ -44,6 +44,38 @@ export function createCardHeader(data) {
     release.className = 'card-release';
     release.textContent = data.release;
     
+    const tooltip = document.createElement('div');
+    tooltip.className = 'card-release-tooltip';
+    tooltip.textContent = 'Milestone';
+    document.body.appendChild(tooltip);
+    
+    let tooltipTimeout;
+    
+    const updateTooltipPosition = () => {
+      const rect = release.getBoundingClientRect();
+      tooltip.style.left = `${rect.left + rect.width / 2}px`;
+      tooltip.style.top = `${rect.top - 8}px`;
+      tooltip.style.transform = 'translate(-50%, -100%)';
+    };
+    
+    release.addEventListener('mouseenter', () => {
+      tooltipTimeout = setTimeout(() => {
+        updateTooltipPosition();
+        tooltip.classList.add('card-release-tooltip-visible');
+      }, 400);
+    });
+    
+    release.addEventListener('mouseleave', () => {
+      clearTimeout(tooltipTimeout);
+      tooltip.classList.remove('card-release-tooltip-visible');
+    });
+    
+    release.addEventListener('mousemove', () => {
+      if (tooltip.classList.contains('card-release-tooltip-visible')) {
+        updateTooltipPosition();
+      }
+    });
+    
     container.appendChild(dot);
     container.appendChild(release);
   }
