@@ -1,5 +1,6 @@
 import { createCardAvatars } from './CardAvatars.js';
 import { createCardDate } from './CardDate.js';
+import { createCardLabels } from './CardLabels.js';
 
 const checkboxCheckedSvg = '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M16.5677 6.64017L9.56771 14.6402C9.19673 15.0853 8.50214 15.1168 8.09238 14.7071L4.09238 10.7071C3.18043 9.79514 4.59464 8.38093 5.50659 9.29288L8.73229 12.5186L15.0313 5.3598C15.8569 4.36903 17.3933 5.6494 16.5677 6.64017Z" fill="#ffffff"/></svg>';
 
@@ -154,8 +155,28 @@ export function createListView(boardData) {
       const priorityCell = document.createElement('div');
       priorityCell.className = 'list-view-cell list-view-cell-priority';
       
+      if (card.labels && card.labels.length > 0) {
+        const priorityLabels = card.labels.filter(label => label.type === 'priority-high' || label.type === 'priority-low');
+        if (priorityLabels.length > 0) {
+          const priorityLabelsElement = createCardLabels(priorityLabels);
+          if (priorityLabelsElement) {
+            priorityCell.appendChild(priorityLabelsElement);
+          }
+        }
+      }
+      
       const typesCell = document.createElement('div');
       typesCell.className = 'list-view-cell list-view-cell-types';
+      
+      if (card.labels && card.labels.length > 0) {
+        const typeLabels = card.labels.filter(label => label.type !== 'priority-high' && label.type !== 'priority-low');
+        if (typeLabels.length > 0) {
+          const typeLabelsElement = createCardLabels(typeLabels);
+          if (typeLabelsElement) {
+            typesCell.appendChild(typeLabelsElement);
+          }
+        }
+      }
       
       const milestoneCell = document.createElement('div');
       milestoneCell.className = 'list-view-cell list-view-cell-milestone';

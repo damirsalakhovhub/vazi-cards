@@ -59,15 +59,16 @@ export function generateBoard(config = {}) {
   
   const allCards = [];
   
-  // Prepare date range types: one different-year, rest split between same-month-year and different-month
-  // We need at least 3 cards with dates, but will use more if available
-  const dateRangeTypes = ['different-year'];
-  
+  // Calculate how many cards should have range dates (5% of cards with dates)
   // Estimate how many cards will have dates (60% chance)
   const estimatedCardsWithDates = Math.max(3, Math.floor(totalCards * 0.6));
-  const remainingWithDates = estimatedCardsWithDates - 1;
-  const sameMonthCount = Math.floor(remainingWithDates / 2);
-  const differentMonthCount = remainingWithDates - sameMonthCount;
+  const cardsWithRangeDates = Math.max(1, Math.floor(estimatedCardsWithDates * 0.05));
+  
+  // Prepare date range types: one different-year, rest split between same-month-year and different-month
+  const dateRangeTypes = ['different-year'];
+  const remainingRangeDates = cardsWithRangeDates - 1;
+  const sameMonthCount = Math.floor(remainingRangeDates / 2);
+  const differentMonthCount = remainingRangeDates - sameMonthCount;
   
   for (let i = 0; i < sameMonthCount; i++) {
     dateRangeTypes.push('same-month-year');
@@ -82,7 +83,8 @@ export function generateBoard(config = {}) {
   let dateTypeIndex = 0;
   
   for (let i = 0; i < totalCards; i++) {
-    // Assign date range type if available, otherwise null (will use random generation)
+    // Assign date range type only if available (5% of cards with dates)
+    // Otherwise null - will generate single end date in generateDate
     const dateRangeType = dateTypeIndex < dateRangeTypes.length ? dateRangeTypes[dateTypeIndex++] : null;
     const card = generateCard(null, dateRangeType);
     card.subtasks = null;

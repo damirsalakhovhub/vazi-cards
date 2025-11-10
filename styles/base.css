@@ -48,8 +48,13 @@ body {
 }
 
 #app.list-view-container {
+  display: flex;
+  flex-direction: column;
   padding: 0;
   gap: 0;
+  /* overflow: visible; */
+  border-radius: 8px 0 0 0;
+  box-shadow: 0px 0px 3px 0px hsla(215, 15%, 50%, 0.2);
 }
 
 .column {

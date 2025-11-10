@@ -1,5 +1,5 @@
 .card-date {
-  font-size: 11px;
+  font-size: var(--size-date-font);
   line-height: normal;
   color: var(--color-date-text);
   white-space: nowrap;

@@ -76,6 +76,7 @@
   /* Дата */
   --color-date-text: var(--color-text-tres);
   --color-date-error: var(--color-text-error);
+  --size-date-font: 11px;
 
   /* Подзадачи */
   /* --color-subtasks-bg-open: var(--color-grey-transparent-05); */
@@ -166,6 +167,8 @@
   --color-list-cell-text: var(--color-text-dos);
   --color-list-task-id: var(--color-text-dos);
   --color-list-task-title: var(--color-text-uno);
+  --size-list-date-font: 13px;
+  --size-list-milestone-font: 15px;
 }
 
 
@@ -255,6 +258,7 @@
     /* DARK Дата */
     --color-date-text: var(--color-text-tres);
     --color-date-error: var(--color-text-error);
+    --size-date-font: 11px;
 
     /* DARK Подзадачи */
     --color-subtasks-bg-open: var(--color-grey-transparent-30);
@@ -345,5 +349,7 @@
     --color-list-cell-text: var(--color-text-uno);
     --color-list-task-id: var(--color-text-tres);
     --color-list-task-title: var(--color-text-uno);
+    --size-list-date-font: 15px;
+    --size-list-milestone-font: 15px;
   }
 }
