@@ -30,17 +30,17 @@ export function createListView(boardData) {
   headerTask.className = 'list-view-header-cell list-view-header-task';
   headerTask.textContent = 'Groups and Tasks';
   
-  const headerAssignee = document.createElement('div');
-  headerAssignee.className = 'list-view-header-cell list-view-header-assignee';
-  headerAssignee.textContent = 'Assignee';
+  const headerPriority = document.createElement('div');
+  headerPriority.className = 'list-view-header-cell list-view-header-priority';
+  headerPriority.textContent = 'Priority';
   
   const headerDate = document.createElement('div');
   headerDate.className = 'list-view-header-cell list-view-header-date';
   headerDate.textContent = 'Due date';
   
-  const headerPriority = document.createElement('div');
-  headerPriority.className = 'list-view-header-cell list-view-header-priority';
-  headerPriority.textContent = 'Priority';
+  const headerAssignee = document.createElement('div');
+  headerAssignee.className = 'list-view-header-cell list-view-header-assignee';
+  headerAssignee.textContent = 'Assignee';
   
   const headerTypes = document.createElement('div');
   headerTypes.className = 'list-view-header-cell list-view-header-types';
@@ -55,9 +55,9 @@ export function createListView(boardData) {
   headerMilestone.textContent = 'Milestone';
   
   header.appendChild(headerTask);
-  header.appendChild(headerAssignee);
-  header.appendChild(headerDate);
   header.appendChild(headerPriority);
+  header.appendChild(headerDate);
+  header.appendChild(headerAssignee);
   header.appendChild(headerTypes);
   header.appendChild(headerProject);
   header.appendChild(headerMilestone);
@@ -138,11 +138,18 @@ export function createListView(boardData) {
       taskCell.appendChild(checkboxWrapper);
       taskCell.appendChild(taskContent);
       
-      const assigneeCell = document.createElement('div');
-      assigneeCell.className = 'list-view-cell list-view-cell-assignee';
+      const priorityCell = document.createElement('div');
+      priorityCell.className = 'list-view-cell list-view-cell-priority';
       
-      const avatars = createCardAvatars(card.assignees);
-      assigneeCell.appendChild(avatars);
+      if (card.labels && card.labels.length > 0) {
+        const priorityLabel = card.labels.find(label => label.type === 'priority-high' || label.type === 'priority-low');
+        if (priorityLabel) {
+          const priorityLabelsElement = createCardLabels([priorityLabel]);
+          if (priorityLabelsElement) {
+            priorityCell.appendChild(priorityLabelsElement);
+          }
+        }
+      }
       
       const dateCell = document.createElement('div');
       dateCell.className = 'list-view-cell list-view-cell-date';
@@ -172,18 +179,11 @@ export function createListView(boardData) {
         }
       }
       
-      const priorityCell = document.createElement('div');
-      priorityCell.className = 'list-view-cell list-view-cell-priority';
+      const assigneeCell = document.createElement('div');
+      assigneeCell.className = 'list-view-cell list-view-cell-assignee';
       
-      if (card.labels && card.labels.length > 0) {
-        const priorityLabel = card.labels.find(label => label.type === 'priority-high' || label.type === 'priority-low');
-        if (priorityLabel) {
-          const priorityLabelsElement = createCardLabels([priorityLabel]);
-          if (priorityLabelsElement) {
-            priorityCell.appendChild(priorityLabelsElement);
-          }
-        }
-      }
+      const avatars = createCardAvatars(card.assignees);
+      assigneeCell.appendChild(avatars);
       
       const typesCell = document.createElement('div');
       typesCell.className = 'list-view-cell list-view-cell-types';
@@ -207,9 +207,9 @@ export function createListView(boardData) {
       milestoneCell.textContent = card.release || '';
       
       row.appendChild(taskCell);
-      row.appendChild(assigneeCell);
-      row.appendChild(dateCell);
       row.appendChild(priorityCell);
+      row.appendChild(dateCell);
+      row.appendChild(assigneeCell);
       row.appendChild(typesCell);
       row.appendChild(projectCell);
       row.appendChild(milestoneCell);
