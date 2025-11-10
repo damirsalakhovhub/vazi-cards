@@ -1,6 +1,6 @@
 .navigation {
   /* background-color: var(--color-bg-content-header); */
-  padding: 0 20px;
+  /* padding: 0 20px; */
   flex-shrink: 0;
 }
 
@@ -13,7 +13,7 @@
 }
 
 .navigation-product {
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 600;
   line-height: 20px;
   color: var(--color-column-header-text);
@@ -25,7 +25,8 @@
   align-items: center;
   gap: 0;
   flex: 1;
-  justify-content: center;
+  margin-left: 24px;
+  /* justify-content: center; */
 }
 
 .navigation-link {
@@ -35,8 +36,8 @@
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
-  color: var(--color-column-header-counter);
-  padding: 8px 12px;
+  color: var(--color-text-tres);
+  padding: 8px 8px;
   transition: color 0.15s ease;
   position: relative;
 }
@@ -56,7 +57,7 @@
   left: 12px;
   right: 12px;
   height: 2px;
-  background-color: var(--color-column-header-text);
+  /* background-color: var(--color-column-header-text); */
   border-radius: 1px 1px 0 0;
 }
 

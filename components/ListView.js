@@ -40,6 +40,12 @@ export function createListView(boardData, viewMode = 'grouped') {
     container.replaceWith(newListView);
   });
   
+  // Add Groups column header for flat view
+  const headerGroups = document.createElement('div');
+  headerGroups.className = 'list-view-header-cell list-view-header-groups';
+  headerGroups.textContent = 'Groups';
+  headerGroups.style.display = viewMode === 'flat' ? '' : 'none';
+  
   const headerPriority = document.createElement('div');
   headerPriority.className = 'list-view-header-cell list-view-header-priority';
   headerPriority.textContent = 'Priority';
@@ -51,12 +57,6 @@ export function createListView(boardData, viewMode = 'grouped') {
   const headerAssignee = document.createElement('div');
   headerAssignee.className = 'list-view-header-cell list-view-header-assignee';
   headerAssignee.textContent = 'Assignee';
-  
-  // Add Groups column header for flat view
-  const headerGroups = document.createElement('div');
-  headerGroups.className = 'list-view-header-cell list-view-header-groups';
-  headerGroups.textContent = 'Groups';
-  headerGroups.style.display = viewMode === 'flat' ? '' : 'none';
   
   const headerTypes = document.createElement('div');
   headerTypes.className = 'list-view-header-cell list-view-header-types';
@@ -71,12 +71,12 @@ export function createListView(boardData, viewMode = 'grouped') {
   headerMilestone.textContent = 'Milestone';
   
   header.appendChild(headerTask);
-  header.appendChild(headerPriority);
-  header.appendChild(headerDate);
-  header.appendChild(headerAssignee);
   if (viewMode === 'flat') {
     header.appendChild(headerGroups);
   }
+  header.appendChild(headerPriority);
+  header.appendChild(headerDate);
+  header.appendChild(headerAssignee);
   header.appendChild(headerTypes);
   header.appendChild(headerProject);
   header.appendChild(headerMilestone);
@@ -166,12 +166,6 @@ export function createListView(boardData, viewMode = 'grouped') {
       }
     }
     
-    const assigneeCell = document.createElement('div');
-    assigneeCell.className = 'list-view-cell list-view-cell-assignee';
-    
-    const avatars = createCardAvatars(card.assignees);
-    assigneeCell.appendChild(avatars);
-    
     // Groups column for flat view
     const groupsCell = document.createElement('div');
     groupsCell.className = 'list-view-cell list-view-cell-groups';
@@ -179,6 +173,12 @@ export function createListView(boardData, viewMode = 'grouped') {
       groupsCell.textContent = column.name;
     }
     groupsCell.style.display = showGroupColumn ? '' : 'none';
+    
+    const assigneeCell = document.createElement('div');
+    assigneeCell.className = 'list-view-cell list-view-cell-assignee';
+    
+    const avatars = createCardAvatars(card.assignees);
+    assigneeCell.appendChild(avatars);
     
     const typesCell = document.createElement('div');
     typesCell.className = 'list-view-cell list-view-cell-types';
@@ -202,12 +202,12 @@ export function createListView(boardData, viewMode = 'grouped') {
     milestoneCell.textContent = card.release || '';
     
     row.appendChild(taskCell);
-    row.appendChild(priorityCell);
-    row.appendChild(dateCell);
-    row.appendChild(assigneeCell);
     if (showGroupColumn) {
       row.appendChild(groupsCell);
     }
+    row.appendChild(priorityCell);
+    row.appendChild(dateCell);
+    row.appendChild(assigneeCell);
     row.appendChild(typesCell);
     row.appendChild(projectCell);
     row.appendChild(milestoneCell);
