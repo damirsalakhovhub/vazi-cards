@@ -124,6 +124,11 @@
   gap: 8px;
 }
 
+.list-view-cell-task .checkbox-wrapper {
+  min-width: 80px;
+  flex-shrink: 0;
+}
+
 .list-view-cell-assignee {
   display: flex;
   align-items: center;
