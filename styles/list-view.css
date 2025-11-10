@@ -31,6 +31,10 @@
   align-items: center;
 }
 
+.list-view[data-view-mode="flat"] .list-view-header {
+  grid-template-columns: var(--grid-list-columns-flat);
+}
+
 .list-view-header-cell {
   font-weight: 500;
   color: var(--color-list-header-text);
@@ -43,6 +47,7 @@
 .list-view-header-assignee { justify-content: var(--align-list-col-assignee); }
 .list-view-header-date { justify-content: var(--align-list-col-date); }
 .list-view-header-priority { justify-content: var(--align-list-col-priority); }
+.list-view-header-groups { justify-content: var(--align-list-col-groups); }
 .list-view-header-types { justify-content: var(--align-list-col-types); }
 .list-view-header-project { justify-content: var(--align-list-col-project); }
 .list-view-header-milestone { justify-content: var(--align-list-col-milestone); }
@@ -115,6 +120,10 @@
   background-color: var(--color-list-row-bg);
   transition: background-color 0.2s ease;
   min-width: 0;
+}
+
+.list-view[data-view-mode="flat"] .list-view-task-row {
+  grid-template-columns: var(--grid-list-columns-flat);
 }
 
 .list-view-task-row:hover {
@@ -194,6 +203,10 @@
 
 .list-view-cell-priority .card-labels {
   justify-content: var(--align-list-col-priority);
+}
+
+.list-view-cell-groups {
+  text-align: var(--align-list-col-groups);
 }
 
 .list-view-cell-types {

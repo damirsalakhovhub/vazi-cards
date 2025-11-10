@@ -177,16 +177,19 @@
   --grid-list-col-priority: clamp(50px, 10vw, 50px);
   --grid-list-col-date: clamp(80px, 12vw, 100px);
   --grid-list-col-assignee: clamp(80px, 2vw, 120px);
+  --grid-list-col-groups: clamp(100px, 12vw, 150px);
   --grid-list-col-types: clamp(150px, 10vw, 200px);
   --grid-list-col-project: clamp(60px, 12vw, 80px);
   --grid-list-col-milestone: clamp(80px, 12vw, 120px);
   --grid-list-columns: var(--grid-list-col-task) var(--grid-list-col-priority) var(--grid-list-col-date) var(--grid-list-col-assignee) var(--grid-list-col-types) var(--grid-list-col-project) var(--grid-list-col-milestone);
+  --grid-list-columns-flat: var(--grid-list-col-task) var(--grid-list-col-priority) var(--grid-list-col-date) var(--grid-list-col-assignee) var(--grid-list-col-groups) var(--grid-list-col-types) var(--grid-list-col-project) var(--grid-list-col-milestone);
   
   /* Выравнивание колонок в списке */
   --align-list-col-task: left;
   --align-list-col-assignee: left;
   --align-list-col-date: left;
   --align-list-col-priority: right;
+  --align-list-col-groups: left;
   --align-list-col-types: left;
   --align-list-col-project: left;
   --align-list-col-milestone: left;

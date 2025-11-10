@@ -17,9 +17,10 @@ function groupCardsByColumn(cards, columns) {
   return grouped;
 }
 
-export function createListView(boardData) {
+export function createListView(boardData, viewMode = 'grouped') {
   const container = document.createElement('div');
   container.className = 'list-view';
+  container.setAttribute('data-view-mode', viewMode);
   
   const grouped = groupCardsByColumn(boardData.cards, boardData.columns);
   
@@ -28,7 +29,16 @@ export function createListView(boardData) {
   
   const headerTask = document.createElement('div');
   headerTask.className = 'list-view-header-cell list-view-header-task';
-  headerTask.textContent = 'Groups and Tasks';
+  headerTask.textContent = viewMode === 'grouped' ? 'Groups and Tasks' : 'Task';
+  headerTask.style.cursor = 'pointer';
+  
+  // Toggle view mode on header click
+  headerTask.addEventListener('click', () => {
+    const currentMode = container.getAttribute('data-view-mode');
+    const newMode = currentMode === 'grouped' ? 'flat' : 'grouped';
+    const newListView = createListView(boardData, newMode);
+    container.replaceWith(newListView);
+  });
   
   const headerPriority = document.createElement('div');
   headerPriority.className = 'list-view-header-cell list-view-header-priority';
@@ -41,6 +51,12 @@ export function createListView(boardData) {
   const headerAssignee = document.createElement('div');
   headerAssignee.className = 'list-view-header-cell list-view-header-assignee';
   headerAssignee.textContent = 'Assignee';
+  
+  // Add Groups column header for flat view
+  const headerGroups = document.createElement('div');
+  headerGroups.className = 'list-view-header-cell list-view-header-groups';
+  headerGroups.textContent = 'Groups';
+  headerGroups.style.display = viewMode === 'flat' ? '' : 'none';
   
   const headerTypes = document.createElement('div');
   headerTypes.className = 'list-view-header-cell list-view-header-types';
@@ -58,6 +74,9 @@ export function createListView(boardData) {
   header.appendChild(headerPriority);
   header.appendChild(headerDate);
   header.appendChild(headerAssignee);
+  if (viewMode === 'flat') {
+    header.appendChild(headerGroups);
+  }
   header.appendChild(headerTypes);
   header.appendChild(headerProject);
   header.appendChild(headerMilestone);
@@ -67,159 +86,189 @@ export function createListView(boardData) {
   const body = document.createElement('div');
   body.className = 'list-view-body';
   
-  Object.values(grouped).forEach(group => {
-    if (group.cards.length === 0) return;
+  // Helper function to create a task row
+  function createTaskRow(card, showGroupColumn = false, column = null) {
+    const row = document.createElement('div');
+    row.className = 'list-view-task-row';
+    row.setAttribute('data-card-id', card.id);
     
-    const groupSection = document.createElement('div');
-    groupSection.className = 'list-view-group';
-    groupSection.setAttribute('data-column-id', group.column.id);
+    const taskCell = document.createElement('div');
+    taskCell.className = 'list-view-cell list-view-cell-task';
     
-    const groupHeader = document.createElement('div');
-    groupHeader.className = 'list-view-group-header';
+    const checkboxWrapper = document.createElement('label');
+    checkboxWrapper.className = 'checkbox-wrapper';
     
-    const groupTitle = document.createElement('span');
-    groupTitle.className = 'list-view-group-title';
-    groupTitle.textContent = group.column.name;
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.className = 'checkbox';
     
-    const groupToggle = document.createElement('button');
-    groupToggle.className = 'list-view-group-toggle';
-    groupToggle.type = 'button';
-    groupToggle.innerHTML = '<svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    const checkboxIcon = document.createElement('span');
+    checkboxIcon.className = 'checkbox-icon';
+    checkboxIcon.innerHTML = checkboxCheckedSvg;
     
-    groupHeader.appendChild(groupTitle);
-    groupHeader.appendChild(groupToggle);
-    groupSection.appendChild(groupHeader);
+    const id = document.createElement('span');
+    id.className = 'checkbox-label';
+    id.textContent = card.id;
     
-    const tasksContainer = document.createElement('div');
-    tasksContainer.className = 'list-view-tasks-container';
-    tasksContainer.setAttribute('data-column-id', group.column.id);
+    checkboxWrapper.appendChild(checkbox);
+    checkboxWrapper.appendChild(checkboxIcon);
+    checkboxWrapper.appendChild(id);
     
-    groupHeader.addEventListener('click', () => {
-      const isHidden = tasksContainer.style.display === 'none';
-      tasksContainer.style.display = isHidden ? '' : 'none';
-      groupToggle.classList.toggle('list-view-group-toggle-collapsed', !isHidden);
-    });
+    const taskContent = document.createElement('div');
+    taskContent.className = 'list-view-task-content';
     
-    group.cards.forEach(card => {
-      const row = document.createElement('div');
-      row.className = 'list-view-task-row';
-      row.setAttribute('data-card-id', card.id);
-      
-      const taskCell = document.createElement('div');
-      taskCell.className = 'list-view-cell list-view-cell-task';
-      
-      const checkboxWrapper = document.createElement('label');
-      checkboxWrapper.className = 'checkbox-wrapper';
-      
-      const checkbox = document.createElement('input');
-      checkbox.type = 'checkbox';
-      checkbox.className = 'checkbox';
-      
-      const checkboxIcon = document.createElement('span');
-      checkboxIcon.className = 'checkbox-icon';
-      checkboxIcon.innerHTML = checkboxCheckedSvg;
-      
-      const id = document.createElement('span');
-      id.className = 'checkbox-label';
-      id.textContent = card.id;
-      
-      checkboxWrapper.appendChild(checkbox);
-      checkboxWrapper.appendChild(checkboxIcon);
-      checkboxWrapper.appendChild(id);
-      
-      const taskContent = document.createElement('div');
-      taskContent.className = 'list-view-task-content';
-      
-      const title = document.createElement('span');
-      title.className = 'list-view-task-title';
-      title.textContent = card.title || '';
-      
-      taskContent.appendChild(title);
-      taskCell.appendChild(checkboxWrapper);
-      taskCell.appendChild(taskContent);
-      
-      const priorityCell = document.createElement('div');
-      priorityCell.className = 'list-view-cell list-view-cell-priority';
-      
-      if (card.labels && card.labels.length > 0) {
-        const priorityLabel = card.labels.find(label => label.type === 'priority-high' || label.type === 'priority-low');
-        if (priorityLabel) {
-          const priorityLabelsElement = createCardLabels([priorityLabel]);
-          if (priorityLabelsElement) {
-            priorityCell.appendChild(priorityLabelsElement);
-          }
+    const title = document.createElement('span');
+    title.className = 'list-view-task-title';
+    title.textContent = card.title || '';
+    
+    taskContent.appendChild(title);
+    taskCell.appendChild(checkboxWrapper);
+    taskCell.appendChild(taskContent);
+    
+    const priorityCell = document.createElement('div');
+    priorityCell.className = 'list-view-cell list-view-cell-priority';
+    
+    if (card.labels && card.labels.length > 0) {
+      const priorityLabel = card.labels.find(label => label.type === 'priority-high' || label.type === 'priority-low');
+      if (priorityLabel) {
+        const priorityLabelsElement = createCardLabels([priorityLabel]);
+        if (priorityLabelsElement) {
+          priorityCell.appendChild(priorityLabelsElement);
         }
       }
-      
-      const dateCell = document.createElement('div');
-      dateCell.className = 'list-view-cell list-view-cell-date';
-      
-      if (card.date) {
-        // In list view, show only deadline (end date), not the full range
-        if (card.date.type === 'range') {
-          const endDate = card.date.end;
-          const endYearShort = String(endDate.year).slice(-2);
-          const endDateStr = `${endDate.day} ${endDate.month} ${endYearShort}`;
-          
-          const dateElement = document.createElement('div');
-          dateElement.className = `card-date card-date-end`;
-          if (card.date.overdue) {
-            dateElement.className += ' card-date-overdue';
-          }
-          
-          const value = document.createElement('span');
-          value.textContent = endDateStr;
-          dateElement.appendChild(value);
+    }
+    
+    const dateCell = document.createElement('div');
+    dateCell.className = 'list-view-cell list-view-cell-date';
+    
+    if (card.date) {
+      // In list view, show only deadline (end date), not the full range
+      if (card.date.type === 'range') {
+        const endDate = card.date.end;
+        const endYearShort = String(endDate.year).slice(-2);
+        const endDateStr = `${endDate.day} ${endDate.month} ${endYearShort}`;
+        
+        const dateElement = document.createElement('div');
+        dateElement.className = `card-date card-date-end`;
+        if (card.date.overdue) {
+          dateElement.className += ' card-date-overdue';
+        }
+        
+        const value = document.createElement('span');
+        value.textContent = endDateStr;
+        dateElement.appendChild(value);
+        dateCell.appendChild(dateElement);
+      } else {
+        const dateElement = createCardDate(card.date);
+        if (dateElement) {
           dateCell.appendChild(dateElement);
-        } else {
-          const dateElement = createCardDate(card.date);
-          if (dateElement) {
-            dateCell.appendChild(dateElement);
-          }
         }
       }
-      
-      const assigneeCell = document.createElement('div');
-      assigneeCell.className = 'list-view-cell list-view-cell-assignee';
-      
-      const avatars = createCardAvatars(card.assignees);
-      assigneeCell.appendChild(avatars);
-      
-      const typesCell = document.createElement('div');
-      typesCell.className = 'list-view-cell list-view-cell-types';
-      
-      if (card.labels && card.labels.length > 0) {
-        const typeLabels = card.labels.filter(label => label.type !== 'priority-high' && label.type !== 'priority-low');
-        if (typeLabels.length > 0) {
-          const typeLabelsElement = createCardLabels(typeLabels);
-          if (typeLabelsElement) {
-            typesCell.appendChild(typeLabelsElement);
-          }
-        }
-      }
-      
-      const projectCell = document.createElement('div');
-      projectCell.className = 'list-view-cell list-view-cell-project';
-      projectCell.textContent = card.project || '';
-      
-      const milestoneCell = document.createElement('div');
-      milestoneCell.className = 'list-view-cell list-view-cell-milestone';
-      milestoneCell.textContent = card.release || '';
-      
-      row.appendChild(taskCell);
-      row.appendChild(priorityCell);
-      row.appendChild(dateCell);
-      row.appendChild(assigneeCell);
-      row.appendChild(typesCell);
-      row.appendChild(projectCell);
-      row.appendChild(milestoneCell);
-      
-      tasksContainer.appendChild(row);
-    });
+    }
     
-    groupSection.appendChild(tasksContainer);
-    body.appendChild(groupSection);
-  });
+    const assigneeCell = document.createElement('div');
+    assigneeCell.className = 'list-view-cell list-view-cell-assignee';
+    
+    const avatars = createCardAvatars(card.assignees);
+    assigneeCell.appendChild(avatars);
+    
+    // Groups column for flat view
+    const groupsCell = document.createElement('div');
+    groupsCell.className = 'list-view-cell list-view-cell-groups';
+    if (showGroupColumn && column) {
+      groupsCell.textContent = column.name;
+    }
+    groupsCell.style.display = showGroupColumn ? '' : 'none';
+    
+    const typesCell = document.createElement('div');
+    typesCell.className = 'list-view-cell list-view-cell-types';
+    
+    if (card.labels && card.labels.length > 0) {
+      const typeLabels = card.labels.filter(label => label.type !== 'priority-high' && label.type !== 'priority-low');
+      if (typeLabels.length > 0) {
+        const typeLabelsElement = createCardLabels(typeLabels);
+        if (typeLabelsElement) {
+          typesCell.appendChild(typeLabelsElement);
+        }
+      }
+    }
+    
+    const projectCell = document.createElement('div');
+    projectCell.className = 'list-view-cell list-view-cell-project';
+    projectCell.textContent = card.project || '';
+    
+    const milestoneCell = document.createElement('div');
+    milestoneCell.className = 'list-view-cell list-view-cell-milestone';
+    milestoneCell.textContent = card.release || '';
+    
+    row.appendChild(taskCell);
+    row.appendChild(priorityCell);
+    row.appendChild(dateCell);
+    row.appendChild(assigneeCell);
+    if (showGroupColumn) {
+      row.appendChild(groupsCell);
+    }
+    row.appendChild(typesCell);
+    row.appendChild(projectCell);
+    row.appendChild(milestoneCell);
+    
+    return row;
+  }
+  
+  if (viewMode === 'grouped') {
+    // Grouped view: show groups with headers
+    Object.values(grouped).forEach(group => {
+      if (group.cards.length === 0) return;
+      
+      const groupSection = document.createElement('div');
+      groupSection.className = 'list-view-group';
+      groupSection.setAttribute('data-column-id', group.column.id);
+      
+      const groupHeader = document.createElement('div');
+      groupHeader.className = 'list-view-group-header';
+      
+      const groupTitle = document.createElement('span');
+      groupTitle.className = 'list-view-group-title';
+      groupTitle.textContent = group.column.name;
+      
+      const groupToggle = document.createElement('button');
+      groupToggle.className = 'list-view-group-toggle';
+      groupToggle.type = 'button';
+      groupToggle.innerHTML = '<svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+      
+      groupHeader.appendChild(groupTitle);
+      groupHeader.appendChild(groupToggle);
+      groupSection.appendChild(groupHeader);
+      
+      const tasksContainer = document.createElement('div');
+      tasksContainer.className = 'list-view-tasks-container';
+      tasksContainer.setAttribute('data-column-id', group.column.id);
+      
+      groupHeader.addEventListener('click', () => {
+        const isHidden = tasksContainer.style.display === 'none';
+        tasksContainer.style.display = isHidden ? '' : 'none';
+        groupToggle.classList.toggle('list-view-group-toggle-collapsed', !isHidden);
+      });
+      
+      group.cards.forEach(card => {
+        const row = createTaskRow(card, false);
+        tasksContainer.appendChild(row);
+      });
+      
+      groupSection.appendChild(tasksContainer);
+      body.appendChild(groupSection);
+    });
+  } else {
+    // Flat view: all tasks in one list, no groups
+    const allCards = boardData.cards;
+    const columnMap = new Map(boardData.columns.map(col => [col.id, col]));
+    
+    allCards.forEach(card => {
+      const column = columnMap.get(card.columnId);
+      const row = createTaskRow(card, true, column);
+      body.appendChild(row);
+    });
+  }
   
   const wrapper = document.createElement('div');
   wrapper.className = 'list-view-wrapper';
