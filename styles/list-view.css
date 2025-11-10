@@ -3,7 +3,8 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   padding: 0;
   background-color: var(--color-bg-content);
   width: 100%;
@@ -26,12 +27,13 @@
   position: sticky;
   top: 0;
   z-index: 10;
+  min-width: 0;
 }
 
 .list-view-header-cell {
-  font-size: 12px;
   font-weight: 500;
   color: var(--color-list-header-text);
+  font-size: 12px;
 }
 
 /* Тело списка */
@@ -101,6 +103,7 @@
   align-items: center;
   background-color: var(--color-list-row-bg);
   transition: background-color 0.2s ease;
+  min-width: 0;
 }
 
 .list-view-task-row:hover {
@@ -109,7 +112,7 @@
 
 /* Ячейки */
 .list-view-cell {
-  font-size: 15px;
+  font-size: 14px;
   color: var(--color-list-cell-text);
   overflow: hidden;
   text-overflow: ellipsis;
@@ -154,11 +157,16 @@
 
 .list-view-cell-date .card-date {
   font-size: var(--size-list-date-font);
+  
 }
 
 .list-view-cell-milestone {
-  color: var(--color-milestone-text);
+  /* color: var(--color-milestone-text); */
   font-size: var(--size-list-milestone-font);
+}
+
+.list-view-cell-project {
+  font-size: var(--size-list-project-font);
 }
 
 /* Контент задачи */

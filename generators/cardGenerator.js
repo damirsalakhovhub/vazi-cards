@@ -30,6 +30,8 @@ const milestoneTemplates = [
   'Sprint 13'
 ];
 
+const projectTemplates = ['Development', 'Marketing', 'Sales', 'SMM', 'HR', 'QR'];
+
 const subtaskTemplates = [
   'Review code changes',
   'Write unit tests',
@@ -254,9 +256,10 @@ function generateDate(rangeType = null) {
     const month = randomItem(months);
     const year = randomInt(2024, 2025);
     
+    const yearShort = String(year).slice(-2);
     return {
       type: 'end',
-      value: `${day} ${month} ${year}`,
+      value: `${day} ${month} ${yearShort}`,
       overdue
     };
   }
@@ -265,6 +268,12 @@ function generateDate(rangeType = null) {
 function generateRelease() {
   if (Math.random() > 0.5) return null;
   return randomItem(milestoneTemplates);
+}
+
+function generateProject() {
+  if (Math.random() > 0.3) return null;
+  
+  return randomItem(projectTemplates);
 }
 
 export function generateSubtasks() {
@@ -319,7 +328,8 @@ export function generateCard(parentId = null, dateRangeType = null) {
     subtasks: generateSubtasks(),
     parentNote: null,
     parentId: parentId || null,
-    subtaskIds: []
+    subtaskIds: [],
+    project: generateProject()
   };
 }
 

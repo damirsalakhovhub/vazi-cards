@@ -46,6 +46,10 @@ export function createListView(boardData) {
   headerTypes.className = 'list-view-header-cell list-view-header-types';
   headerTypes.textContent = 'Types';
   
+  const headerProject = document.createElement('div');
+  headerProject.className = 'list-view-header-cell list-view-header-project';
+  headerProject.textContent = 'Project';
+  
   const headerMilestone = document.createElement('div');
   headerMilestone.className = 'list-view-header-cell list-view-header-milestone';
   headerMilestone.textContent = 'Milestone';
@@ -55,6 +59,7 @@ export function createListView(boardData) {
   header.appendChild(headerDate);
   header.appendChild(headerPriority);
   header.appendChild(headerTypes);
+  header.appendChild(headerProject);
   header.appendChild(headerMilestone);
   
   container.appendChild(header);
@@ -153,9 +158,9 @@ export function createListView(boardData) {
       priorityCell.className = 'list-view-cell list-view-cell-priority';
       
       if (card.labels && card.labels.length > 0) {
-        const priorityLabels = card.labels.filter(label => label.type === 'priority-high' || label.type === 'priority-low');
-        if (priorityLabels.length > 0) {
-          const priorityLabelsElement = createCardLabels(priorityLabels);
+        const priorityLabel = card.labels.find(label => label.type === 'priority-high' || label.type === 'priority-low');
+        if (priorityLabel) {
+          const priorityLabelsElement = createCardLabels([priorityLabel]);
           if (priorityLabelsElement) {
             priorityCell.appendChild(priorityLabelsElement);
           }
@@ -175,6 +180,10 @@ export function createListView(boardData) {
         }
       }
       
+      const projectCell = document.createElement('div');
+      projectCell.className = 'list-view-cell list-view-cell-project';
+      projectCell.textContent = card.project || '';
+      
       const milestoneCell = document.createElement('div');
       milestoneCell.className = 'list-view-cell list-view-cell-milestone';
       milestoneCell.textContent = card.release || '';
@@ -184,6 +193,7 @@ export function createListView(boardData) {
       row.appendChild(dateCell);
       row.appendChild(priorityCell);
       row.appendChild(typesCell);
+      row.appendChild(projectCell);
       row.appendChild(milestoneCell);
       
       tasksContainer.appendChild(row);

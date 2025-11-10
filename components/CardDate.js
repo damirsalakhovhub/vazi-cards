@@ -20,12 +20,14 @@ export function createCardDate(dateData) {
     if (start.month !== end.month || start.year !== end.year) {
       startStr += ` ${start.month}`;
       if (start.year !== end.year) {
-        startStr += ` ${start.year}`;
+        const startYearShort = String(start.year).slice(-2);
+        startStr += ` ${startYearShort}`;
       }
     }
     
     // Format end date
-    let endStr = `${end.day} ${end.month} ${end.year}`;
+    const endYearShort = String(end.year).slice(-2);
+    let endStr = `${end.day} ${end.month} ${endYearShort}`;
     
     value.textContent = `${startStr} – ${endStr}`;
   } else {
