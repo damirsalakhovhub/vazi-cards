@@ -47,6 +47,11 @@ body {
   background-color: var(--color-bg-content);
 }
 
+#app.list-view-container {
+  padding: 0;
+  gap: 0;
+}
+
 .column {
   background-color: var(--color-bg-content);
   border-radius: 7px;

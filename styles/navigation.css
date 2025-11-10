@@ -1,6 +1,5 @@
 .navigation {
-  background-color: var(--color-bg-content-header);
-  border-bottom: 1px solid var(--color-column-outline);
+  /* background-color: var(--color-bg-content-header); */
   padding: 0 20px;
   flex-shrink: 0;
 }
