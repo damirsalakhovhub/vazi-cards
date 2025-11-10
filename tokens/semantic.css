@@ -13,7 +13,7 @@
   --color-bg-quatro: var(--color-gray-85);
 
   /* Специальные цвета */
-  --color-bg: var(--color-gray-95);
+  --color-bg: var(--color-gray-94);
   --color-bg-content: var(--color-gray-98);
   --color-bg-content-dos: var(--color-gray-95);
   --color-bg-content-header: var(--color-gray-96);
@@ -163,9 +163,9 @@
   --color-list-header-text: var(--color-text-dos);
   --color-list-row-bg: transparent;
   --color-list-row-bg-hover: var(--color-gray-95);
-  --color-list-row-border: hsla(215, 15%, 50%, 0.05);
-  --color-list-cell-text: var(--color-text-uno);
-  --color-list-task-id: var(--color-text-tres);
+  --color-list-row-border: hsla(215, 15%, 50%, 0.15);
+  --color-list-cell-text: var(--color-text-dos);
+  --color-list-task-id: var(--color-text-dos);
   --color-list-task-title: var(--color-text-uno);
 }
 

@@ -1,3 +1,4 @@
+/* Контейнеры */
 .list-view-container {
   display: flex;
   flex-direction: column;
@@ -24,6 +25,7 @@
   background-color: var(--color-bg-content);
 }
 
+/* Заголовок таблицы */
 .list-view-header {
   display: grid;
   grid-template-columns: 1fr 120px 120px 100px 100px 120px;
@@ -38,11 +40,13 @@
   color: var(--color-list-header-text);
 }
 
+/* Тело списка */
 .list-view-body {
   display: flex;
   flex-direction: column;
 }
 
+/* Группы задач */
 .list-view-group {
   display: flex;
   flex-direction: column;
@@ -85,11 +89,13 @@
   transform: rotate(-90deg);
 }
 
+/* Контейнер задач */
 .list-view-tasks-container {
   display: flex;
   flex-direction: column;
 }
 
+/* Строки задач */
 .list-view-task-row {
   display: grid;
   grid-template-columns: 1fr 120px 120px 100px 100px 120px;
@@ -105,8 +111,9 @@
   background-color: var(--color-list-row-bg-hover);
 }
 
+/* Ячейки */
 .list-view-cell {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--color-list-cell-text);
 }
 
@@ -116,7 +123,21 @@
   gap: 8px;
 }
 
+.list-view-cell-assignee {
+  display: flex;
+  align-items: center;
+}
 
+.list-view-cell-assignee .card-avatars {
+  display: flex;
+  align-items: center;
+}
+
+.list-view-cell-milestone {
+  color: var(--color-milestone-text);
+}
+
+/* Контент задачи */
 .list-view-task-content {
   display: flex;
   align-items: center;
@@ -129,24 +150,11 @@
   font-size: 12px;
   color: var(--color-list-task-id);
   flex-shrink: 0;
+  min-width: 80px;
 }
 
 .list-view-task-title {
   color: var(--color-list-task-title);
   flex: 1;
-}
-
-.list-view-cell-milestone {
-  color: var(--color-milestone-text);
-}
-
-.list-view-cell-assignee {
-  display: flex;
-  align-items: center;
-}
-
-.list-view-cell-assignee .card-avatars {
-  display: flex;
-  align-items: center;
 }
 
