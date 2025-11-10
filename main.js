@@ -8,7 +8,7 @@ import { createListView } from './components/ListView.js';
 import { createSidebar } from './components/Sidebar.js';
 
 let currentBoardConfig = generateBoard({ columnsCount: 5, totalCards: 50 });
-let currentView = 'board';
+let currentView = 'list';
 
 function renderBoard(boardData) {
   const app = document.getElementById('app');
@@ -115,7 +115,11 @@ function init() {
   const generatorPanel = createGeneratorPanel(handleGenerate);
   document.body.insertBefore(generatorPanel, mainContainer);
   
-  renderBoard(currentBoardConfig);
+  if (currentView === 'board') {
+    renderBoard(currentBoardConfig);
+  } else if (currentView === 'list') {
+    renderListView(currentBoardConfig);
+  }
 }
 
 init();
