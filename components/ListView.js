@@ -115,21 +115,21 @@ export function createListView(boardData) {
       checkboxIcon.className = 'checkbox-icon';
       checkboxIcon.innerHTML = checkboxCheckedSvg;
       
+      const id = document.createElement('span');
+      id.className = 'checkbox-label';
+      id.textContent = card.id;
+      
       checkboxWrapper.appendChild(checkbox);
       checkboxWrapper.appendChild(checkboxIcon);
+      checkboxWrapper.appendChild(id);
       
       const taskContent = document.createElement('div');
       taskContent.className = 'list-view-task-content';
-      
-      const id = document.createElement('span');
-      id.className = 'list-view-task-id';
-      id.textContent = card.id;
       
       const title = document.createElement('span');
       title.className = 'list-view-task-title';
       title.textContent = card.title || '';
       
-      taskContent.appendChild(id);
       taskContent.appendChild(title);
       taskCell.appendChild(checkboxWrapper);
       taskCell.appendChild(taskContent);

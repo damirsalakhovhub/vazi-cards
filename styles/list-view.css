@@ -50,6 +50,7 @@
 .list-view-group {
   display: flex;
   flex-direction: column;
+  margin-bottom: 12px;
 }
 
 .list-view-group-header {
@@ -143,14 +144,6 @@
   align-items: center;
   gap: 8px;
   flex: 1;
-}
-
-.list-view-task-id {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
-  color: var(--color-list-task-id);
-  flex-shrink: 0;
-  min-width: 80px;
 }
 
 .list-view-task-title {
