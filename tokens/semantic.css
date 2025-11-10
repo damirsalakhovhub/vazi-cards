@@ -156,14 +156,14 @@
   --color-generator-form-border: var(--color-border-subtle);
 
   /* Список */
-  --color-list-group-header-bg: var(--color-bg-content-header);
-  --color-list-group-header-text: var(--color-column-header-text);
-  --color-list-group-toggle: var(--color-text-tres);
-  --color-list-group-toggle-hover: var(--color-text-dos);
-  --color-list-header-text: var(--color-column-header-counter);
+  --color-list-group-header-bg: var(--color-gray-95);
+  --color-list-group-header-text: var(--color-text-uno);
+  --color-list-group-toggle: var(--color-gray-50);
+  --color-list-group-toggle-hover: var(--color-gray-35);
+  --color-list-header-text: var(--color-text-dos);
   --color-list-row-bg: transparent;
-  --color-list-row-bg-hover: var(--color-card-bg-hover);
-  --color-list-row-border: var(--color-column-outline);
+  --color-list-row-bg-hover: var(--color-gray-98);
+  --color-list-row-border: hsla(215, 15%, 50%, 0.05);
   --color-list-cell-text: var(--color-text-uno);
   --color-list-task-id: var(--color-text-tres);
   --color-list-task-title: var(--color-text-uno);
@@ -335,14 +335,14 @@
     --color-generator-form-border: var(--color-border-subtle);
 
     /* DARK Список */
-    --color-list-group-header-bg: var(--color-bg-content-header);
-    --color-list-group-header-text: var(--color-column-header-text);
-    --color-list-group-toggle: var(--color-text-tres);
-    --color-list-group-toggle-hover: var(--color-text-dos);
-    --color-list-header-text: var(--color-column-header-counter);
+    --color-list-group-header-bg: var(--color-gray-15);
+    --color-list-group-header-text: var(--color-text-uno);
+    --color-list-group-toggle: var(--color-gray-70);
+    --color-list-group-toggle-hover: var(--color-gray-80);
+    --color-list-header-text: var(--color-text-dos);
     --color-list-row-bg: transparent;
-    --color-list-row-bg-hover: var(--color-card-bg-hover);
-    --color-list-row-border: var(--color-column-outline);
+    --color-list-row-bg-hover: var(--color-gray-14);
+    --color-list-row-border: hsla(215, 15%, 50%, 0.08);
     --color-list-cell-text: var(--color-text-uno);
     --color-list-task-id: var(--color-text-tres);
     --color-list-task-title: var(--color-text-uno);
