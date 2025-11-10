@@ -21,9 +21,6 @@ export function createListView(boardData) {
   const container = document.createElement('div');
   container.className = 'list-view';
   
-  const wrapper = document.createElement('div');
-  wrapper.className = 'list-view-wrapper';
-  
   const grouped = groupCardsByColumn(boardData.cards, boardData.columns);
   
   const header = document.createElement('div');
@@ -31,7 +28,7 @@ export function createListView(boardData) {
   
   const headerTask = document.createElement('div');
   headerTask.className = 'list-view-header-cell list-view-header-task';
-  headerTask.textContent = 'Task';
+  headerTask.textContent = 'Groups and Tasks';
   
   const headerAssignee = document.createElement('div');
   headerAssignee.className = 'list-view-header-cell list-view-header-assignee';
@@ -60,7 +57,7 @@ export function createListView(boardData) {
   header.appendChild(headerTypes);
   header.appendChild(headerMilestone);
   
-  wrapper.appendChild(header);
+  container.appendChild(header);
   
   const body = document.createElement('div');
   body.className = 'list-view-body';
@@ -196,6 +193,8 @@ export function createListView(boardData) {
     body.appendChild(groupSection);
   });
   
+  const wrapper = document.createElement('div');
+  wrapper.className = 'list-view-wrapper';
   wrapper.appendChild(body);
   container.appendChild(wrapper);
   
