@@ -86,8 +86,7 @@ export function createListView(boardData) {
     tasksContainer.className = 'list-view-tasks-container';
     tasksContainer.setAttribute('data-column-id', group.column.id);
     
-    groupToggle.addEventListener('click', (e) => {
-      e.stopPropagation();
+    groupHeader.addEventListener('click', () => {
       const isHidden = tasksContainer.style.display === 'none';
       tasksContainer.style.display = isHidden ? '' : 'none';
       groupToggle.classList.toggle('list-view-group-toggle-collapsed', !isHidden);
