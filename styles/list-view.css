@@ -28,13 +28,24 @@
   top: 0;
   z-index: 10;
   min-width: 0;
+  align-items: center;
 }
 
 .list-view-header-cell {
   font-weight: 500;
   color: var(--color-list-header-text);
   font-size: 12px;
+  display: flex;
+  align-items: center;
 }
+
+.list-view-header-task { justify-content: var(--align-list-col-task); }
+.list-view-header-assignee { justify-content: var(--align-list-col-assignee); }
+.list-view-header-date { justify-content: var(--align-list-col-date); }
+.list-view-header-priority { justify-content: var(--align-list-col-priority); }
+.list-view-header-types { justify-content: var(--align-list-col-types); }
+.list-view-header-project { justify-content: var(--align-list-col-project); }
+.list-view-header-milestone { justify-content: var(--align-list-col-milestone); }
 
 /* Тело списка */
 .list-view-body {
@@ -126,6 +137,7 @@
   gap: 8px;
   min-width: 0;
   overflow: visible;
+  justify-content: var(--align-list-col-task);
 }
 
 .list-view-cell-task .checkbox-wrapper {
@@ -137,6 +149,7 @@
   display: flex;
   align-items: center;
   overflow: visible;
+  justify-content: var(--align-list-col-assignee);
 }
 
 .list-view-cell-assignee .card-avatars {
@@ -152,7 +165,7 @@
 
 .list-view-cell-priority .card-label,
 .list-view-cell-types .card-label {
-  max-width: 100%;
+  max-width: 80px;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -167,6 +180,32 @@
 .list-view-cell-priority,
 .list-view-cell-types {
   overflow: visible;
+}
+
+.list-view-cell-date {
+  text-align: var(--align-list-col-date);
+}
+
+.list-view-cell-priority {
+  display: flex;
+  align-items: center;
+  justify-content: var(--align-list-col-priority);
+}
+
+.list-view-cell-priority .card-labels {
+  justify-content: var(--align-list-col-priority);
+}
+
+.list-view-cell-types {
+  text-align: var(--align-list-col-types);
+}
+
+.list-view-cell-project {
+  text-align: var(--align-list-col-project);
+}
+
+.list-view-cell-milestone {
+  text-align: var(--align-list-col-milestone);
 }
 
 .list-view-cell-date .card-date {
