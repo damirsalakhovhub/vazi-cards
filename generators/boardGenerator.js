@@ -64,20 +64,16 @@ export function generateBoard(config = {}) {
   const estimatedCardsWithDates = Math.max(3, Math.floor(totalCards * 0.6));
   const cardsWithRangeDates = Math.max(1, Math.floor(estimatedCardsWithDates * 0.05));
   
-  // Prepare date range types: one different-year, rest split between same-month-year and different-month
-  const dateRangeTypes = ['different-year'];
-  const remainingRangeDates = cardsWithRangeDates - 1;
-  const sameMonthCount = Math.floor(remainingRangeDates / 2);
-  const differentMonthCount = remainingRangeDates - sameMonthCount;
-  
-  for (let i = 0; i < sameMonthCount; i++) {
-    dateRangeTypes.push('same-month-year');
-  }
-  for (let i = 0; i < differentMonthCount; i++) {
-    dateRangeTypes.push('different-month');
+  // Prepare date range types: one different-year (rare), rest are different-month
+  const dateRangeTypes = [];
+  if (cardsWithRangeDates > 0) {
+    dateRangeTypes.push('different-year'); // Only one different-year
+    for (let i = 1; i < cardsWithRangeDates; i++) {
+      dateRangeTypes.push('different-month'); // Rest are different-month
+    }
   }
   
-  // Shuffle range types
+  // Shuffle range types so different-year can be anywhere
   dateRangeTypes.sort(() => Math.random() - 0.5);
   
   let dateTypeIndex = 0;

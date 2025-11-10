@@ -150,6 +150,20 @@
   flex-wrap: nowrap;
 }
 
+.list-view-cell-priority .card-label,
+.list-view-cell-types .card-label {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.list-view-cell-priority .card-label-text,
+.list-view-cell-types .card-label-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .list-view-cell-priority,
 .list-view-cell-types {
   overflow: visible;

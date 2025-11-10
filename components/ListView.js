@@ -148,9 +148,27 @@ export function createListView(boardData) {
       dateCell.className = 'list-view-cell list-view-cell-date';
       
       if (card.date) {
-        const dateElement = createCardDate(card.date);
-        if (dateElement) {
+        // In list view, show only deadline (end date), not the full range
+        if (card.date.type === 'range') {
+          const endDate = card.date.end;
+          const endYearShort = String(endDate.year).slice(-2);
+          const endDateStr = `${endDate.day} ${endDate.month} ${endYearShort}`;
+          
+          const dateElement = document.createElement('div');
+          dateElement.className = `card-date card-date-end`;
+          if (card.date.overdue) {
+            dateElement.className += ' card-date-overdue';
+          }
+          
+          const value = document.createElement('span');
+          value.textContent = endDateStr;
+          dateElement.appendChild(value);
           dateCell.appendChild(dateElement);
+        } else {
+          const dateElement = createCardDate(card.date);
+          if (dateElement) {
+            dateCell.appendChild(dateElement);
+          }
         }
       }
       
