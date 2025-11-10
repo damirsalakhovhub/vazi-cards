@@ -6,6 +6,7 @@
   width: 100%;
   margin: 0;
   padding: 0;
+  box-shadow: 0px 0px 3px 0px hsla(215, 15%, 50%, 0.2);
 }
 
 .list-view {
@@ -34,7 +35,7 @@
 .list-view-header-cell {
   font-size: 12px;
   font-weight: 500;
-  color: var(--color-column-header-counter);
+  color: var(--color-list-header-text);
 }
 
 .list-view-body {
@@ -50,10 +51,18 @@
 .list-view-group-header {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 8px;
   padding: 8px 12px;
-  background-color: var(--color-bg-content-header);
+  background-color: var(--color-list-group-header-bg);
   cursor: pointer;
+}
+
+.list-view-group-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-list-group-header-text);
+  flex: 1;
 }
 
 .list-view-group-toggle {
@@ -61,19 +70,22 @@
   border: none;
   cursor: pointer;
   padding: 0;
-  width: 16px;
-  height: 16px;
+  width: 12px;
+  height: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-column-header-counter);
+  color: var(--color-list-group-toggle);
   transition: transform 0.2s ease;
+  flex-shrink: 0;
 }
 
-.list-view-group-title {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--color-column-header-text);
+.list-view-group-toggle:hover {
+  color: var(--color-list-group-toggle-hover);
+}
+
+.list-view-group-toggle-collapsed {
+  transform: rotate(-90deg);
 }
 
 .list-view-tasks-container {
@@ -86,17 +98,19 @@
   grid-template-columns: 1fr 120px 120px 100px 100px 120px;
   gap: 12px;
   padding: 8px 12px;
-  border-bottom: 1px solid var(--color-column-outline);
+  border-bottom: 1px solid var(--color-list-row-border);
   align-items: center;
+  background-color: var(--color-list-row-bg);
+  transition: background-color 0.2s ease;
 }
 
 .list-view-task-row:hover {
-  background-color: var(--color-card-bg-hover);
+  background-color: var(--color-list-row-bg-hover);
 }
 
 .list-view-cell {
   font-size: 14px;
-  color: var(--color-text-uno);
+  color: var(--color-list-cell-text);
 }
 
 .list-view-cell-task {
@@ -121,12 +135,12 @@
 .list-view-task-id {
   font-family: 'JetBrains Mono', monospace;
   font-size: 12px;
-  color: var(--color-text-tres);
+  color: var(--color-list-task-id);
   flex-shrink: 0;
 }
 
 .list-view-task-title {
-  color: var(--color-text-uno);
+  color: var(--color-list-task-title);
   flex: 1;
 }
 

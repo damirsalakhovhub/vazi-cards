@@ -69,22 +69,29 @@ export function createListView(boardData) {
     const groupHeader = document.createElement('div');
     groupHeader.className = 'list-view-group-header';
     
-    const groupToggle = document.createElement('button');
-    groupToggle.className = 'list-view-group-toggle';
-    groupToggle.type = 'button';
-    groupToggle.innerHTML = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-    
     const groupTitle = document.createElement('span');
     groupTitle.className = 'list-view-group-title';
     groupTitle.textContent = group.column.name;
     
-    groupHeader.appendChild(groupToggle);
+    const groupToggle = document.createElement('button');
+    groupToggle.className = 'list-view-group-toggle';
+    groupToggle.type = 'button';
+    groupToggle.innerHTML = '<svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    
     groupHeader.appendChild(groupTitle);
+    groupHeader.appendChild(groupToggle);
     groupSection.appendChild(groupHeader);
     
     const tasksContainer = document.createElement('div');
     tasksContainer.className = 'list-view-tasks-container';
     tasksContainer.setAttribute('data-column-id', group.column.id);
+    
+    groupToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isHidden = tasksContainer.style.display === 'none';
+      tasksContainer.style.display = isHidden ? '' : 'none';
+      groupToggle.classList.toggle('list-view-group-toggle-collapsed', !isHidden);
+    });
     
     group.cards.forEach(card => {
       const row = document.createElement('div');

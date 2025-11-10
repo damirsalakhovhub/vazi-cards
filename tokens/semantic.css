@@ -154,6 +154,19 @@
   --color-generator-button-bg: var(--color-checkbox-checked-bg);
   --color-generator-button-text: var(--color-text-white);
   --color-generator-form-border: var(--color-border-subtle);
+
+  /* Список */
+  --color-list-group-header-bg: var(--color-bg-content-header);
+  --color-list-group-header-text: var(--color-column-header-text);
+  --color-list-group-toggle: var(--color-text-tres);
+  --color-list-group-toggle-hover: var(--color-text-dos);
+  --color-list-header-text: var(--color-column-header-counter);
+  --color-list-row-bg: transparent;
+  --color-list-row-bg-hover: var(--color-card-bg-hover);
+  --color-list-row-border: var(--color-column-outline);
+  --color-list-cell-text: var(--color-text-uno);
+  --color-list-task-id: var(--color-text-tres);
+  --color-list-task-title: var(--color-text-uno);
 }
 
 
@@ -320,5 +333,18 @@
     --color-generator-button-bg: var(--color-checkbox-checked-bg);
     --color-generator-button-text: var(--color-text-white);
     --color-generator-form-border: var(--color-border-subtle);
+
+    /* DARK Список */
+    --color-list-group-header-bg: var(--color-bg-content-header);
+    --color-list-group-header-text: var(--color-column-header-text);
+    --color-list-group-toggle: var(--color-text-tres);
+    --color-list-group-toggle-hover: var(--color-text-dos);
+    --color-list-header-text: var(--color-column-header-counter);
+    --color-list-row-bg: transparent;
+    --color-list-row-bg-hover: var(--color-card-bg-hover);
+    --color-list-row-border: var(--color-column-outline);
+    --color-list-cell-text: var(--color-text-uno);
+    --color-list-task-id: var(--color-text-tres);
+    --color-list-task-title: var(--color-text-uno);
   }
 }
