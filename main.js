@@ -3,12 +3,16 @@ import { createColumnHeader } from './components/ColumnHeader.js';
 import { createCard } from './components/Card.js';
 import { createAddTaskButton } from './components/AddTaskButton.js';
 import { createGeneratorPanel } from './components/GeneratorPanel.js';
+import { createNavigation } from './components/Navigation.js';
+import { createListView } from './components/ListView.js';
 
 let currentBoardConfig = generateBoard({ columnsCount: 5, totalCards: 50 });
+let currentView = 'board';
 
 function renderBoard(boardData) {
   const app = document.getElementById('app');
   app.innerHTML = '';
+  app.className = '';
   
   boardData.columns.forEach(columnConfig => {
     const column = document.createElement('div');
@@ -48,14 +52,49 @@ function renderBoard(boardData) {
   });
 }
 
+function renderListView(boardData) {
+  const app = document.getElementById('app');
+  app.innerHTML = '';
+  app.className = 'list-view-container';
+  
+  const listView = createListView(boardData);
+  app.appendChild(listView);
+}
+
+function handleViewChange(view) {
+  currentView = view;
+  
+  const navigation = document.querySelector('.navigation');
+  if (navigation) {
+    navigation.remove();
+  }
+  
+  const newNavigation = createNavigation(currentView, handleViewChange);
+  document.body.insertBefore(newNavigation, document.getElementById('app'));
+  
+  if (view === 'board') {
+    renderBoard(currentBoardConfig);
+  } else if (view === 'list') {
+    renderListView(currentBoardConfig);
+  }
+}
+
 function handleGenerate(config) {
   const newBoard = generateBoard(config);
   currentBoardConfig = newBoard;
-  renderBoard(newBoard);
+  
+  if (currentView === 'board') {
+    renderBoard(newBoard);
+  } else if (currentView === 'list') {
+    renderListView(newBoard);
+  }
 }
 
 function init() {
   const app = document.getElementById('app');
+  
+  const navigation = createNavigation(currentView, handleViewChange);
+  document.body.insertBefore(navigation, app);
   
   const generatorPanel = createGeneratorPanel(handleGenerate);
   document.body.insertBefore(generatorPanel, app);

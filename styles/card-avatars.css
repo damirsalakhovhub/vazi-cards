@@ -9,15 +9,15 @@
   width: 20px;
   height: 20px;
   border-radius: 100px;
-  background-color: var(--color-bg-subtle);
+  background-color: var(--color-avatar-default-bg);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 10px;
-  color: var(--color-text-uno);
+  color: var(--color-avatar-default-text);
   overflow: hidden;
   flex-shrink: 0;
-  box-shadow: 0 0 0 2px hsla(0, 0%, 100%, 0.8);
+  box-shadow: 0 0 0 1px var(--color-avatar-border);
   position: relative;
 }
 
@@ -39,8 +39,8 @@
 }
 
 .card-avatar[data-type="avatar-vaiz"] {
-  background-color: var(--color-bg-subtle);
-  color: var(--color-text-uno);
+  background-color: var(--color-avatar-default-bg);
+  color: var(--color-avatar-default-text);
 }
 
 .card-avatar-no-assignee {
@@ -48,18 +48,18 @@
   height: 20px;
   flex-shrink: 0;
   border-radius: 100px;
-  background-color: #E2E5E8;
+  background-color: var(--color-avatar-no-assignee-bg);
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   cursor: pointer;
   transition: background-color 0.2s ease;
-  box-shadow: 0 0 0 1px var(--color-text-white);
+  box-shadow: 0 0 0 1px var(--color-avatar-border);
 }
 
 .card-avatar-no-assignee:hover {
-  background-color: var(--color-bg-hover);
+  background-color: var(--color-avatar-no-assignee-bg-hover);
 }
 
 .card-avatar-no-assignee-silhouette,
@@ -75,12 +75,12 @@
 
 .card-avatar-no-assignee-silhouette {
   opacity: 1;
-  color: var(--color-text-quatro);
+  color: var(--color-avatar-no-assignee-silhouette);
 }
 
 .card-avatar-no-assignee-plus {
   opacity: 0;
-  color: var(--color-text-tres);
+  color: var(--color-avatar-no-assignee-plus);
 }
 
 .card-avatar-no-assignee:hover .card-avatar-no-assignee-silhouette {

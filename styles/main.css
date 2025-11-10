@@ -1,6 +1,7 @@
 @import url('../tokens/colors.css');
 @import url('../tokens/semantic.css');
 @import url('base.css');
+@import url('navigation.css');
 @import url('checkbox.css');
 @import url('column-header.css');
 @import url('card.css');
@@ -13,3 +14,4 @@
 @import url('card-subtasks.css');
 @import url('add-task-button.css');
 @import url('generator-panel.css');
+@import url('list-view.css');

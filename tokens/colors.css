@@ -12,6 +12,16 @@
   --color-gray-08: hsl(215, 15%, 8%);
   --color-gray-09: hsl(215, 15%, 9%);
   --color-gray-10: hsl(215, 15%, 10%);
+  --color-gray-11: hsl(215, 15%, 11%);
+  --color-gray-12: hsl(215, 15%, 12%);
+  --color-gray-13: hsl(215, 15%, 13%);
+  --color-gray-14: hsl(215, 15%, 14%);
+  --color-gray-15: hsl(215, 15%, 15%);
+  --color-gray-16: hsl(215, 15%, 16%);
+  --color-gray-17: hsl(215, 15%, 17%);
+  --color-gray-18: hsl(215, 15%, 18%);
+  --color-gray-19: hsl(215, 15%, 19%);
+  --color-gray-20: hsl(215, 15%, 20%);
   --color-gray-15: hsl(215, 15%, 15%);
   --color-gray-20: hsl(215, 15%, 20%);
   --color-gray-25: hsl(215, 15%, 25%);
@@ -37,6 +47,35 @@
   --color-gray-97: hsl(215, 15%, 97%);
   --color-gray-98: hsl(215, 15%, 98%);
   --color-gray-99: hsl(215, 15%, 99%);
+
+  /* Прозрачные серые цвета */
+
+
+
+  --color-grey-transparent-01: hsla(215, 15%, 1%, 0.01);
+  --color-grey-transparent-02: hsla(215, 15%, 2%, 0.02);
+  --color-grey-transparent-03: hsla(215, 15%, 3%, 0.03);
+  --color-grey-transparent-04: hsla(215, 15%, 4%, 0.04);;
+  --color-grey-transparent-05: hsla(215, 15%, 5%, 0.05);
+  --color-grey-transparent-10: hsla(215, 15%, 10%, 0.1);
+  --color-grey-transparent-15: hsla(215, 15%, 15%, 0.15);
+  --color-grey-transparent-20: hsla(215, 15%, 20%, 0.2);
+  --color-grey-transparent-25: hsla(215, 15%, 25%, 0.25);
+  --color-grey-transparent-30: hsla(215, 15%, 30%, 0.3);
+  --color-grey-transparent-35: hsla(215, 15%, 35%, 0.35);
+  --color-grey-transparent-40: hsla(215, 15%, 40%, 0.4);
+  --color-grey-transparent-45: hsla(215, 15%, 45%, 0.45);
+  --color-grey-transparent-50: hsla(215, 15%, 50%, 0.5);
+  --color-grey-transparent-55: hsla(215, 15%, 55%, 0.55);
+  --color-grey-transparent-60: hsla(215, 15%, 60%, 0.6);
+  --color-grey-transparent-65: hsla(215, 15%, 65%, 0.65);
+  --color-grey-transparent-70: hsla(215, 15%, 70%, 0.7);
+  --color-grey-transparent-75: hsla(215, 15%, 75%, 0.75);
+  --color-grey-transparent-80: hsla(215, 15%, 80%, 0.8);
+  --color-grey-transparent-85: hsla(215, 15%, 85%, 0.85);
+  --color-grey-transparent-90: hsla(215, 15%, 90%, 0.9);
+  --color-grey-transparent-95: hsla(215, 15%, 95%, 0.95);
+
 
   /* Красные цвета */
   --color-red-01: hsl(0, 100%, 1%);

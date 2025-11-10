@@ -7,11 +7,10 @@
 
 .card-subtasks-open {
   padding: 2px 4px;
-  background-color: var(--color-bg-content-header);
 }
 
-.card-subtasks-open:not(.card-subtasks-hover) {
-  background-color: transparent;
+.card-subtasks-open.card-subtasks-hover {
+  background-color: var(--color-subtasks-bg-open);
 }
 
 

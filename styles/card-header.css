@@ -34,7 +34,7 @@
 .card-release {
   font-size: 12px;
   line-height: 16px;
-  color: var(--color-text-dos);
+  color: var(--color-milestone-text);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -44,11 +44,11 @@
 }
 
 .card-release:hover {
-  color: var(--color-text-uno);
+  color: var(--color-milestone-text-hover);
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 2px;
-  text-decoration-color: hsla(215, 10%, 20%, 0.2);
+  text-decoration-color: var(--color-milestone-underline);
 }
 
 .card-release-tooltip {

@@ -1,0 +1,21 @@
+.list-view-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.list-view {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.list-view-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  font-size: 14px;
+  color: var(--color-text-tres);
+}
+

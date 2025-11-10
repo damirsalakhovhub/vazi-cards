@@ -36,37 +36,37 @@
 }
 
 .card-label-priority-high {
-  background-color: rgba(255, 47, 1, 0.2);
-  color: #ff2f01;
+  background-color: var(--color-label-priority-high-bg);
+  color: var(--color-label-priority-high-text);
 }
 
 .card-label-priority-low {
-  background-color: rgba(1, 191, 255, 0.2);
-  color: #01bfff;
+  background-color: var(--color-label-priority-low-bg);
+  color: var(--color-label-priority-low-text);
 }
 
 .card-label-magenta {
-  background-color: rgba(255, 76, 195, 0.2);
-  color: #bf4096;
+  background-color: var(--color-label-magenta-bg);
+  color: var(--color-label-magenta-text);
 }
 
 .card-label-olive {
-  background-color: rgba(153, 229, 0, 0.2);
-  color: #709c16;
+  background-color: var(--color-label-olive-bg);
+  color: var(--color-label-olive-text);
 }
 
 .card-label-mint {
-  background-color: rgba(0, 229, 115, 0.2);
-  color: #39ac73;
+  background-color: var(--color-label-mint-bg);
+  color: var(--color-label-mint-text);
 }
 
 .card-label-lavender {
-  background-color: rgba(195, 76, 255, 0.2);
-  color: #9640bf;
+  background-color: var(--color-label-lavender-bg);
+  color: var(--color-label-lavender-text);
 }
 
 .card-label-tangerine {
-  background-color: #eb8900;
-  color: #ffffff;
+  background-color: var(--color-label-tangerine-bg);
+  color: var(--color-label-tangerine-text);
 }
 

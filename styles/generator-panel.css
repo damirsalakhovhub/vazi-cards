@@ -3,9 +3,9 @@
   bottom: 10px;
   right: 10px;
   z-index: 1000;
-  background-color: var(--color-bg-content);
+  background-color: var(--color-generator-panel-bg);
   border-radius: 5px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px var(--color-generator-panel-shadow);
   padding: 12px;
   /* min-width: 200px; */
 }
@@ -15,7 +15,7 @@
   height: 40px;
   padding: 0;
   background-color: transparent;
-  color: var(--color-text-uno);
+  color: var(--color-generator-toggle);
   border: none;
   border-radius: 54px;
   cursor: pointer;
@@ -36,7 +36,7 @@
   gap: 12px;
   margin-top: 12px;
   padding-top: 12px;
-  border-top: 1px solid var(--color-border-subtle);
+  border-top: 1px solid var(--color-generator-form-border);
 }
 
 .generator-form label {
@@ -44,29 +44,29 @@
   flex-direction: column;
   gap: 4px;
   font-size: 12px;
-  color: var(--color-text-dos);
+  color: var(--color-generator-label);
   font-weight: 600;
 }
 
 .generator-input {
   padding: 6px 8px;
-  border: 1px solid var(--color-border-dos);
+  border: 1px solid var(--color-generator-input-border);
   border-radius: 4px;
   font-size: 14px;
   font-family: 'Inter', sans-serif;
-  background-color: var(--color-bg-content);
-  color: var(--color-text-uno);
+  background-color: var(--color-generator-input-bg);
+  color: var(--color-generator-input-text);
 }
 
 .generator-input:focus {
   outline: none;
-  border-color: var(--color-border-tres);
+  border-color: var(--color-generator-input-border-focus);
 }
 
 .generator-button {
   padding: 8px 16px;
-  background-color: var(--color-checkbox-checked-bg);
-  color: var(--color-text-white);
+  background-color: var(--color-generator-button-bg);
+  color: var(--color-generator-button-text);
   border: none;
   border-radius: 4px;
   cursor: pointer;

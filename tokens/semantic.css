@@ -2,8 +2,8 @@
   
   /* Текст - семантические уровни */
   --color-text-uno: var(--color-gray-10);
-  --color-text-dos: var(--color-gray-45);
-  --color-text-tres: var(--color-gray-60);
+  --color-text-dos: var(--color-gray-35);
+  --color-text-tres: var(--color-gray-50);
   --color-text-quatro: var(--color-gray-70);
 
   /* Фон - семантические уровни */
@@ -13,10 +13,10 @@
   --color-bg-quatro: var(--color-gray-85);
 
   /* Специальные цвета */
-  --color-bg: var(--color-gray-94);
+  --color-bg: var(--color-gray-95);
   --color-bg-content: var(--color-gray-98);
   --color-bg-content-dos: var(--color-gray-95);
-  --color-bg-content-header: var(--color-gray-95);
+  --color-bg-content-header: var(--color-gray-96);
   --color-bg-content-header-hover: var(--color-gray-92);
   
   /* Column header colors - light shades */
@@ -37,7 +37,7 @@
   --color-border-quatro: hsla(215, 15%, 50%, 0.4);
 
   /* Дополнительные семантические цвета */
-  /* --color-bg-subtle: var(--color-gray-95); */
+  --color-bg-subtle: var(--color-gray-95);
   --color-bg-hover: var(--color-gray-90);
   --color-border: var(--color-border-dos);
   --color-border-subtle: var(--color-border-uno);
@@ -47,32 +47,278 @@
 
 
   /* Карточка */
-  --color-card-text: var(--color-gray-20);
-  --color-card-text-hover: var(--color-gray-1);
+  --color-card-bg: transparent;
+  --color-card-bg-hover: var(--color-gray-96);
+  --color-card-text: var(--color-gray-25);
+  --color-card-text-hover: var(--color-gray-2);
 
   /* Родительская заметка */
+  --color-parent-note-bg: var(--color-grey-transparent-04);
+  --color-parent-note-bg-hover: var(--color-grey-transparent-10);
   --color-parent-note-text: var(--color-text-dos);
   --color-parent-note-text-hover: var(--color-text-uno);
-  --color-parent-note-bg: var(--color-bg-content-header);
-  --color-parent-note-bg-hover: var(--color-bg-content-header-hover);
 
   /* Чекбокс */
+  --color-checkbox-bg: transparent;
   --color-checkbox-border: var(--color-border-dos);
   --color-checkbox-border-hover: var(--color-border-quatro);
   --color-checkbox-checked-bg: var(--color-green-30);
+  --color-checkbox-checked-bg-hover: var(--color-green-30);
   --color-checkbox-checked-icon: var(--color-text-white);
-  --color-checkbox-label: var(--color-text-dos);
-  --color-checkbox-label-hover: var(--color-text-uno);
+  --color-checkbox-label: var(--color-text-tres);
+  --color-checkbox-label-hover: var(--color-text-dos);
   --card-checked-opacity: 0.6;
 
+  /* Майлстоун */
+  --color-milestone-text: var(--color-text-tres);
+  --color-milestone-text-hover: var(--color-text-uno);
+  --color-milestone-underline: hsla(215, 15%, 50%, 0.2);
+
+  /* Дата */
+  --color-date-text: var(--color-text-tres);
+  --color-date-error: var(--color-text-error);
+
   /* Подзадачи */
+  /* --color-subtasks-bg-open: var(--color-grey-transparent-05); */
   --color-subtasks-header: var(--color-text-dos);
-  --color-subtasks-header-hover: var(--color-text-uno);
+  --color-subtasks-header-hover: var(--color-gray-10);
   --color-subtasks-item: var(--color-gray-30);
   --color-subtasks-item-hover: var(--color-gray-20);
   --color-subtasks-item-underline-hover: var(--color-gray-80);
   --color-subtsask-header-arrow: var(--color-text-tres);
+
+  /* Лейблы */
+  --color-label-priority-high-bg: rgba(255, 47, 1, 0.2);
+  --color-label-priority-high-text: #ff2f01;
+  --color-label-priority-low-bg: rgba(1, 191, 255, 0.2);
+  --color-label-priority-low-text: #01bfff;
+  --color-label-magenta-bg: rgba(255, 76, 195, 0.2);
+  --color-label-magenta-text: #bf4096;
+  --color-label-olive-bg: rgba(153, 229, 0, 0.2);
+  --color-label-olive-text: #709c16;
+  --color-label-mint-bg: rgba(0, 229, 115, 0.2);
+  --color-label-mint-text: #39ac73;
+  --color-label-lavender-bg: rgba(195, 76, 255, 0.2);
+  --color-label-lavender-text: #9640bf;
+  --color-label-tangerine-bg: #eb8900;
+  --color-label-tangerine-text: #ffffff;
+
+  /* Аватары */
+  --color-avatar-default-bg: var(--color-bg-subtle);
+  --color-avatar-default-text: var(--color-text-uno);
+  --color-avatar-border: var(--color-bg-content);
+  --color-avatar-no-assignee-bg: var(--color-gray-90);
+  --color-avatar-no-assignee-bg-hover: var(--color-bg-hover);
+  --color-avatar-no-assignee-silhouette: var(--color-text-quatro);
+  --color-avatar-no-assignee-plus: var(--color-text-tres);
+
+  /* Колонка */
+  --color-column-header-bg: var(--color-bg-content-header);
+  --color-column-header-bg-hover: var(--color-bg-content-header-hover);
+  --color-column-header-text: var(--color-text-uno);
+  --color-column-header-counter: var(--color-text-dos);
+  --color-column-header-menu: var(--color-text-dos);
+  --color-column-header-menu-hover: var(--color-text-uno);
+  --color-column-shadow: hsla(215, 15%, 50%, 0.08);
+  --color-column-outline: hsla(215, 15%, 50%, 0.05);
+
+  /* Кнопка добавления задачи */
+  --color-add-task-bg: transparent;
+  --color-add-task-bg-hover: transparent;
+  --color-add-task-text: var(--color-text-dos);
+  --color-add-task-text-hover: var(--color-text-dos);
+  --color-add-task-icon: var(--color-text-quatro);
+  --color-add-task-icon-hover: var(--color-text-quatro);
+  --color-add-task-border: var(--color-border);
+  --color-add-task-opacity: 0.8;
+
+  /* Меню карточки */
+  --color-card-menu-button: var(--color-text-tres);
+  --color-card-menu-button-hover: var(--color-text-uno);
+
+  /* Параметры карточки */
+  --color-card-parameters-plus: var(--color-text-tres);
+
+  /* Разделитель карточки */
+  --color-card-divider: var(--color-gray-90);
+
+  /* Генератор панель */
+  --color-generator-panel-bg: var(--color-bg-content);
+  --color-generator-panel-shadow: rgba(0, 0, 0, 0.1);
+  --color-generator-toggle: var(--color-text-uno);
+  --color-generator-label: var(--color-text-dos);
+  --color-generator-input-bg: var(--color-bg-content);
+  --color-generator-input-text: var(--color-text-uno);
+  --color-generator-input-border: var(--color-border-dos);
+  --color-generator-input-border-focus: var(--color-border-tres);
+  --color-generator-button-bg: var(--color-checkbox-checked-bg);
+  --color-generator-button-text: var(--color-text-white);
+  --color-generator-form-border: var(--color-border-subtle);
 }
 
 
 
+
+
+
+
+
+
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* DARK Текст - семантические уровни */
+    --color-text-uno: var(--color-gray-98);
+    --color-text-dos: var(--color-gray-80);
+    --color-text-tres: var(--color-gray-70);
+    --color-text-quatro: var(--color-gray-60);
+
+    /* DARK Фон - семантические уровни */
+    --color-bg-uno: var(--color-gray-10);
+    --color-bg-dos: var(--color-gray-15);
+    --color-bg-tres: var(--color-gray-20);
+    --color-bg-quatro: var(--color-gray-25);
+
+    /* DARK Специальные цвета */
+    --color-bg: var(--color-gray-08);
+    --color-bg-content: var(--color-gray-12);
+    --color-bg-content-dos: var(--color-gray-15);
+    --color-bg-content-header: var(--color-gray-15);
+    --color-bg-content-header-hover: var(--color-gray-18);
+    
+    /* DARK Column header colors - dark shades */
+    --color-column-header-blue: hsla(215, 100%, 15%, 1);
+    --color-column-header-green: hsla(120, 30%, 15%, 1);
+    --color-column-header-purple: hsla(270, 100%, 15%, 1);
+    --color-column-header-orange: hsla(30, 100%, 15%, 1);
+    --color-column-header-pink: hsla(330, 100%, 15%, 1);
+
+    --color-bg-card: var(--color-gray-12);
+    --color-bg-black: var(--color-gray-98);
+    --color-text-white: var(--color-gray-01);
+
+    /* DARK Бордеры - семантические уровни */
+    --color-border-uno: hsla(215, 15%, 50%, 0.15);
+    --color-border-dos: hsla(215, 15%, 50%, 0.25);
+    --color-border-tres: hsla(215, 15%, 50%, 0.35);
+    --color-border-quatro: hsla(215, 15%, 50%, 0.45);
+
+    /* DARK Дополнительные семантические цвета */
+    --color-bg-subtle: var(--color-gray-15);
+    --color-bg-hover: var(--color-gray-20);
+    --color-border: var(--color-border-dos);
+    --color-border-subtle: var(--color-border-uno);
+    --color-text-error: var(--color-red-75);
+    --color-bg-accent: var(--color-red-50);
+    --color-avatar-blue: var(--color-blue-60);
+
+    /* DARK Карточка */
+    --color-card-bg: transparent;
+    --color-card-bg-hover: var(--color-gray-14);
+    --color-card-text: var(--color-gray-85);
+    --color-card-text-hover: var(--color-gray-98);
+
+    /* DARK Родительская заметка */
+    --color-parent-note-bg: var(--color-grey-transparent-25);
+    --color-parent-note-bg-hover: var(--color-grey-transparent-35);
+    --color-parent-note-text: var(--color-text-dos);
+    --color-parent-note-text-hover: var(--color-text-uno);
+
+    /* DARK Чекбокс */
+    --color-checkbox-bg: transparent;
+    --color-checkbox-border: var(--color-border-dos);
+    --color-checkbox-border-hover: var(--color-border-quatro);
+    --color-checkbox-checked-bg: var(--color-green-30);
+    --color-checkbox-checked-bg-hover: var(--color-green-30);
+    --color-checkbox-checked-icon: var(--color-text-white);
+    --color-checkbox-label: var(--color-text-tres);
+    --color-checkbox-label-hover: var(--color-text-dos);
+    --card-checked-opacity: 0.6;
+
+    /* DARK Майлстоун */
+    --color-milestone-text: var(--color-text-tres);
+    --color-milestone-text-hover: var(--color-text-uno);
+    --color-milestone-underline: hsla(215, 15%, 50%, 0.3);
+
+    /* DARK Дата */
+    --color-date-text: var(--color-text-tres);
+    --color-date-error: var(--color-text-error);
+
+    /* DARK Подзадачи */
+    --color-subtasks-bg-open: var(--color-grey-transparent-30);
+    --color-subtasks-header: var(--color-text-dos);
+    --color-subtasks-header-hover: var(--color-text-uno);
+    --color-subtasks-item: var(--color-gray-75);
+    --color-subtasks-item-hover: var(--color-gray-85);
+    --color-subtasks-item-underline-hover: var(--color-gray-30);
+    --color-subtsask-header-arrow: var(--color-text-tres);
+
+    /* DARK Лейблы */
+    --color-label-priority-high-bg: rgba(255, 47, 1, 0.2);
+    --color-label-priority-high-text: #ff2f01;
+    --color-label-priority-low-bg: rgba(1, 191, 255, 0.2);
+    --color-label-priority-low-text: #01bfff;
+    --color-label-magenta-bg: rgba(255, 76, 195, 0.2);
+    --color-label-magenta-text: #bf4096;
+    --color-label-olive-bg: rgba(153, 229, 0, 0.2);
+    --color-label-olive-text: #709c16;
+    --color-label-mint-bg: rgba(0, 229, 115, 0.2);
+    --color-label-mint-text: #39ac73;
+    --color-label-lavender-bg: rgba(195, 76, 255, 0.2);
+    --color-label-lavender-text: #9640bf;
+    --color-label-tangerine-bg: #eb8900;
+    --color-label-tangerine-text: #ffffff;
+
+    /* DARK Аватары */
+    --color-avatar-default-bg: var(--color-bg-subtle);
+    --color-avatar-default-text: var(--color-text-uno);
+    --color-avatar-border: var(--color-bg-content);
+    --color-avatar-no-assignee-bg: var(--color-gray-20);
+    --color-avatar-no-assignee-bg-hover: var(--color-bg-hover);
+    --color-avatar-no-assignee-silhouette: var(--color-text-quatro);
+    --color-avatar-no-assignee-plus: var(--color-text-tres);
+
+    /* DARK Колонка */
+    --color-column-header-bg: var(--color-bg-content-header);
+    --color-column-header-bg-hover: var(--color-bg-content-header-hover);
+    --color-column-header-text: var(--color-text-uno);
+    --color-column-header-counter: var(--color-text-dos);
+    --color-column-header-menu: var(--color-text-dos);
+    --color-column-header-menu-hover: var(--color-text-uno);
+    --color-column-shadow: hsla(215, 15%, 50%, 0.12);
+    --color-column-outline: hsla(215, 15%, 50%, 0.08);
+
+    /* DARK Кнопка добавления задачи */
+    --color-add-task-bg: transparent;
+    --color-add-task-bg-hover: transparent;
+    --color-add-task-text: var(--color-text-dos);
+    --color-add-task-text-hover: var(--color-text-dos);
+    --color-add-task-icon: var(--color-text-quatro);
+    --color-add-task-icon-hover: var(--color-text-quatro);
+    --color-add-task-border: var(--color-border);
+    --color-add-task-opacity: 0.8;
+
+    /* DARK Меню карточки */
+    --color-card-menu-button: var(--color-text-tres);
+    --color-card-menu-button-hover: var(--color-text-uno);
+
+    /* DARK Параметры карточки */
+    --color-card-parameters-plus: var(--color-text-tres);
+
+    /* DARK Разделитель карточки */
+    --color-card-divider: var(--color-border-uno);
+
+    /* DARK Генератор панель */
+    --color-generator-panel-bg: var(--color-bg-content);
+    --color-generator-panel-shadow: rgba(0, 0, 0, 0.2);
+    --color-generator-toggle: var(--color-text-uno);
+    --color-generator-label: var(--color-text-dos);
+    --color-generator-input-bg: var(--color-bg-content);
+    --color-generator-input-text: var(--color-text-uno);
+    --color-generator-input-border: var(--color-border-dos);
+    --color-generator-input-border-focus: var(--color-border-tres);
+    --color-generator-button-bg: var(--color-checkbox-checked-bg);
+    --color-generator-button-text: var(--color-text-white);
+    --color-generator-form-border: var(--color-border-subtle);
+  }
+}

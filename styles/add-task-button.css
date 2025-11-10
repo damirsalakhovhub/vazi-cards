@@ -8,12 +8,12 @@
   background: none;
   border: none;
   cursor: pointer;
-  color: var(--color-text-dos);
+  color: var(--color-add-task-text);
   font-size: 14px;
   line-height: 20px;
-  opacity: 0.8;
+  opacity: var(--color-add-task-opacity);
   flex-shrink: 0;
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid var(--color-add-task-border);
 }
 
 .add-task-icon {
@@ -23,10 +23,10 @@
   align-items: center;
   justify-content: center;
   font-size: 16px;
-  color: var(--color-text-quatro);
+  color: var(--color-add-task-icon);
 }
 
 .add-task-text {
-  color: var(--color-text-dos);
+  color: var(--color-add-task-text);
 }
 
