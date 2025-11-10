@@ -15,6 +15,9 @@ export function createListView(boardData) {
   const container = document.createElement('div');
   container.className = 'list-view';
   
+  const wrapper = document.createElement('div');
+  wrapper.className = 'list-view-table-wrapper';
+  
   const grouped = groupCardsByColumn(boardData.cards, boardData.columns);
   
   const table = document.createElement('table');
@@ -142,7 +145,8 @@ export function createListView(boardData) {
   });
   
   table.appendChild(tbody);
-  container.appendChild(table);
+  wrapper.appendChild(table);
+  container.appendChild(wrapper);
   
   return container;
 }

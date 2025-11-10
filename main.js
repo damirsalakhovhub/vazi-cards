@@ -5,6 +5,7 @@ import { createAddTaskButton } from './components/AddTaskButton.js';
 import { createGeneratorPanel } from './components/GeneratorPanel.js';
 import { createNavigation } from './components/Navigation.js';
 import { createListView } from './components/ListView.js';
+import { createSidebar } from './components/Sidebar.js';
 
 let currentBoardConfig = generateBoard({ columnsCount: 5, totalCards: 50 });
 let currentView = 'board';
@@ -64,13 +65,15 @@ function renderListView(boardData) {
 function handleViewChange(view) {
   currentView = view;
   
+  const contentWrapper = document.querySelector('.content-wrapper');
   const navigation = document.querySelector('.navigation');
   if (navigation) {
     navigation.remove();
   }
   
   const newNavigation = createNavigation(currentView, handleViewChange);
-  document.body.insertBefore(newNavigation, document.getElementById('app'));
+  const app = document.getElementById('app');
+  contentWrapper.insertBefore(newNavigation, app);
   
   if (view === 'board') {
     renderBoard(currentBoardConfig);
@@ -93,11 +96,24 @@ function handleGenerate(config) {
 function init() {
   const app = document.getElementById('app');
   
+  const sidebar = createSidebar();
+  const mainContainer = document.createElement('div');
+  mainContainer.className = 'main-container';
+  
+  const contentWrapper = document.createElement('div');
+  contentWrapper.className = 'content-wrapper';
+  
   const navigation = createNavigation(currentView, handleViewChange);
-  document.body.insertBefore(navigation, app);
+  
+  mainContainer.appendChild(sidebar);
+  contentWrapper.appendChild(navigation);
+  contentWrapper.appendChild(app);
+  mainContainer.appendChild(contentWrapper);
+  
+  document.body.appendChild(mainContainer);
   
   const generatorPanel = createGeneratorPanel(handleGenerate);
-  document.body.insertBefore(generatorPanel, app);
+  document.body.insertBefore(generatorPanel, mainContainer);
   
   renderBoard(currentBoardConfig);
 }
