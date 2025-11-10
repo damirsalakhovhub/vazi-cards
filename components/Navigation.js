@@ -28,26 +28,11 @@ export function createNavigation(currentView, onViewChange) {
   }
   listLink.addEventListener('click', () => onViewChange('list'));
   
-  const milestonesLink = document.createElement('button');
-  milestonesLink.className = 'navigation-link';
-  milestonesLink.textContent = 'Milestones';
-  
-  const ganttLink = document.createElement('button');
-  ganttLink.className = 'navigation-link';
-  ganttLink.textContent = 'Gantt';
-  
   views.appendChild(boardLink);
   views.appendChild(listLink);
-  views.appendChild(milestonesLink);
-  views.appendChild(ganttLink);
-  
-  const filters = document.createElement('button');
-  filters.className = 'navigation-filters';
-  filters.textContent = 'Filters';
   
   container.appendChild(product);
   container.appendChild(views);
-  container.appendChild(filters);
   
   nav.appendChild(container);
   

@@ -7,15 +7,98 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow: auto;
+  padding: 20px;
 }
 
-.list-view-placeholder {
+.list-view-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.list-view-header-row th {
+  text-align: left;
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-column-header-counter);
+  border-bottom: 1px solid var(--color-column-outline);
+}
+
+.list-view-group-row {
+  background-color: var(--color-bg-content-header);
+}
+
+.list-view-group-cell {
+  padding: 0;
+}
+
+.list-view-group-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.list-view-group-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 16px;
+  height: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex: 1;
+  color: var(--color-column-header-counter);
+  transition: transform 0.2s ease;
+}
+
+.list-view-group-title {
   font-size: 14px;
+  font-weight: 600;
+  color: var(--color-column-header-text);
+}
+
+.list-view-tasks-container {
+  display: table-row;
+}
+
+.list-view-tasks-cell {
+  padding: 0;
+}
+
+.list-view-tasks-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.list-view-task-row {
+  border-bottom: 1px solid var(--color-column-outline);
+}
+
+.list-view-task-row:hover {
+  background-color: var(--color-card-bg-hover);
+}
+
+.list-view-cell {
+  padding: 8px 12px;
+  font-size: 14px;
+  color: var(--color-text-uno);
+}
+
+.list-view-cell-id {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
   color: var(--color-text-tres);
+}
+
+.list-view-cell-title {
+  color: var(--color-text-uno);
+}
+
+.list-view-cell-milestone {
+  color: var(--color-milestone-text);
 }
 
